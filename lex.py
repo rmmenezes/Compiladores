@@ -1,3 +1,4 @@
+import sys
 import ply.lex as lex
 
 RESERVED = {
@@ -78,19 +79,8 @@ t_NEGACAO = r'!'
 t_DOIS_PONTOS = r':'
 t_VIRGULA = r','
 
-##reservadas
-t_SE = r'se'
-t_SENAO = r'senão'
-t_ENTAO = r'então'
-t_REPITA = r'repita'
-t_ESCREVA = r'escreva'
-t_LEIA = r'leia'
-t_ATE = r'até'
-t_FIM = r'fim'
-t_INTEIRO = r'inteiro'
-t_FLUTUANTE = r'flutuante'
+t_NUMERO = r'([0-9]+)(\.[0-9]+)?([e|E][+|-]?[0-9]+)?'
 
-t_NUMERO = r'([0-9]+)(\.[0-9]+)?([e|E](\+|\-)[0-9]+)?'
 
 def t_ID(t):
     r'[A-Za-z_][\w]*'
@@ -98,7 +88,7 @@ def t_ID(t):
     return t
 
 def t_comment(t):
-    r'[ ]*\{[^\.]*\}'
+    r'\{[^}]*[^{]*\}'
     pass
 
 def t_error(t):
@@ -108,10 +98,10 @@ def t_error(t):
 
 lex.lex()
 
-file = open("teste-2.tpp", "r", encoding="utf-8")
+file = open("fat.tpp", "r", encoding="utf-8")
 
 lex.input(file.read())
 while True:
     tok = lex.token()
     if not tok: break
-    print('(' + tok.type, ':', tok.value + ')')
+    print( tok.type, ':', tok.value )
