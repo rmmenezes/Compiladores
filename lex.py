@@ -98,7 +98,7 @@ def t_error(t):
 
 lex.lex()
 
-file = open("fat.tpp", "r", encoding="utf-8")
+file = open(sys.argv[1], "r", encoding="utf-8")
 
 lex.input(file.read())
 while True:
