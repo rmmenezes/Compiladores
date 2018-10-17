@@ -42,4 +42,3 @@ inteiro principal()
   bubble_sort()
   retorna(0)
 fim
-12.6e-56

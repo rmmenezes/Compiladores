@@ -52,6 +52,7 @@ class Lex:
             'OU_LOGICO',
             'NEGACAO',
             'QUEBRA_LINHA',
+            'DIFERENTE'
             ]
 
     t_ignore = " \t\n"
@@ -70,6 +71,7 @@ class Lex:
     t_FECHA_COUCH = r'\]'
     t_MENOR = r'<'
     t_MAIOR = r'>'
+    t_DIFERENTE = r'<>'
     t_ATRIBUICAO = r':='
     t_MENOR_IGUAL = r'<='
     t_MAIOR_IGUAL = r'>='
@@ -108,6 +110,6 @@ class Lex:
             print(tok.type, ':', tok.value)
 
 if __name__ == '__main__':
-    ia = Lex()
+    l = Lex()
     file = open(sys.argv[1], "r", encoding="utf-8")
-    ia.print_tk(file.read())
+    l.print_tk(file.read())
