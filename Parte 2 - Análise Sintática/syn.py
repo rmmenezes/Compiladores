@@ -67,7 +67,7 @@ class Syn:
         '''var : ID
                | ID indice'''
         if len(p) == 2:
-            p[0] = Tree('var', [p[1]])
+            p[0] = Tree('var', [], p[1])
         else:
             p[0] = Tree('var', [p[2]], p[1])
 
@@ -83,7 +83,7 @@ class Syn:
     def p_tipo(self, p):
         '''tipo : INTEIRO
                 | FLUTUANTE'''
-        p[0] = Tree('tipo')
+        p[0] = Tree('tipo', [])
 
     def p_declaracao_funcao(self, p):
         '''declaracao_funcao : tipo cabecalho
@@ -128,7 +128,8 @@ class Syn:
                 | repita
                 | leia
                 | escreva
-                | retorna'''
+                | retorna
+                | error'''
         p[0] = Tree('acao', [p[1]])
 
     def p_se(self, p):
@@ -202,10 +203,8 @@ class Syn:
             p[0] = Tree('fator', [p[2]])
         
     def p_numero(self, p):
-        '''numero : INTEIRO
-                  | FLUTUANTE
-                  | NUMERO'''
-        p[0] = Tree('numero', [p[1]])
+        '''numero : NUMERO'''
+        p[0] = Tree('numero', [], p[1])
     
     def p_chamada_funcao(self, p):
         '''chamada_funcao : ID ABRE_PAREN lista_argumentos FECHA_PAREN'''
@@ -260,14 +259,41 @@ class Syn:
         '''vazio : '''
         p[0] = Tree('vazio', [None])
 
-    def p_erro(self, p):
+    def p_error(self, p):
         if p:
             print("Erro Sintatico: %s" %(p.value))
             exit(1)
         else:
             print("Erro Fatal!@")
             exit(1)
-    
+
+# def print_tree(node, dot, i):
+#     if node != None:
+#         ##print("%s %s %s" %(level, node.type, node.value))
+#         for son in node.child:
+#             pai = str(node) + " " + str(i-1)
+#             filho = str(node) + " " + str(i)
+#             dot.edge(pai, filho)
+#             print_tree(son, dot, i+1) 
+
+def print_tree(node, dot, i="0", pai=None):
+    if node != None:
+        ##print("%s %s %s" %(level, node.type, node.value))
+        filho = str(node) + str(i)
+        dot.node(filho, str(node))
+        if pai: dot.edge(pai, filho)
+        j = "0"
+        for son in node.child:
+            j+="1"
+            print_tree(son, dot, i+j, filho) 
+
+
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         l = Syn()
+        dot = Digraph(comment='The Round Table')
+        print_tree(l.ast, dot)
+        print(dot.source)  # doctest: +NORMALIZE_WHITESPACE
+        dot.render('test-output/round-table.gv.pdf', view=True)  # doctest: +SKIP
+    else:
+        print("Erro de arquivo XD!")
