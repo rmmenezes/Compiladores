@@ -110,14 +110,13 @@ class Syn:
     def p_parametro(self, p):
         '''parametro : tipo DOIS_PONTOS ID
                         |  parametro ABRE_COUCH FECHA_COUCH '''
-        if len(p) == 4:
-            p[0] = Tree('parametro', [p[1]], p[3])
+        p[0] = Tree('parametro', [p[1]], p[3])
 
     def p_corpo(self, p):
         '''corpo : corpo acao
                  | vazio '''
         if len(p) == 3:
-            p[0] = Tree('corpo', [p[1]], p[2])
+            p[0] = Tree('corpo', [p[1], p[2]])
         else:
             p[0] = Tree('corpo', [p[1]])
 
@@ -128,8 +127,7 @@ class Syn:
                 | repita
                 | leia
                 | escreva
-                | retorna
-                | error'''
+                | retorna'''
         p[0] = Tree('acao', [p[1]])
 
     def p_se(self, p):
@@ -142,20 +140,20 @@ class Syn:
 
 
     def p_repita(self, p):
-        '''repita : REPITA corpo ATE expressao '''
+        '''repita : REPITA corpo ATE expressao'''
         p[0] = Tree('repita', [p[2], p[4]])
 
     def p_atribuicao(self, p):
-        '''atribuicao : var ATRIBUICAO expressao '''
+        '''atribuicao : var ATRIBUICAO expressao'''
         p[0] = Tree('atribuicao', [p[1], p[3]])
 
     def p_leia(self, p):
-        '''leia : LEIA ABRE_PAREN var FECHA_PAREN '''
-        p[0] = Tree('leia', [], p[3])
+        '''leia : LEIA ABRE_PAREN var FECHA_PAREN'''
+        p[0] = Tree('leia', [p[3]])
 
     def p_escreva(self, p):
             ''' escreva : ESCREVA ABRE_PAREN expressao FECHA_PAREN '''
-            p[0] = Tree('escreva', [], p[3])
+            p[0] = Tree('escreva', [p[3]])
 
     def p_retorna(self, p):
             '''retorna : RETORNA ABRE_PAREN expressao FECHA_PAREN '''
@@ -182,8 +180,7 @@ class Syn:
     
     def p_operador_logico(self, p):
         '''operador_logico : E_LOGICO
-                           | OU_LOGICO
-                           | NEGACAO'''
+                           | OU_LOGICO'''
         p[0] = Tree('operador_logico', [p[1]])
 
     def p_operador_multiplicacao(self, p):
@@ -283,6 +280,7 @@ def print_tree(node, dot, i="0", pai=None):
         dot.node(filho, str(node))
         if pai: dot.edge(pai, filho)
         j = "0"
+        if not isinstance(node, Tree): return
         for son in node.child:
             j+="1"
             print_tree(son, dot, i+j, filho) 
