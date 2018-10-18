@@ -4,7 +4,6 @@ from graphviz import Digraph
 import sys
 import ply.lex as lex
 
-
 class Tree:
     def __init__(self, type_node='', child=[], value=''):
         self.type = type_node
@@ -14,16 +13,20 @@ class Tree:
     def __str__(self):
         return self.type
 
-class syn:
+class Syn:
     def __init__(self):
-        l = Lex()
-        self.tokens = l.tokens
+        lex = Lex()
+        self.tokens = lex.tokens
         #Definição das precedencias
         self.precedence = (
             ('left', 'COMPARACAO', 'MAIOR_IGUAL', 'MAIOR', 'MENOR_IGUAL', 'MENOR'),
             ('left', 'MAIS', 'MENOS'),
             ('left', 'MULT', 'DIVIDE'),
         )
+        arq = open(sys.argv[1], 'r', encoding='utf-8')
+        data = arq.read()
+        parser = yacc.yacc(debug=False, module=self, optimize=False)
+        self.ast = parser.parse(data)
     
     def p_programa(self, p):
         '''programa : lista_declaracoes'''
@@ -87,7 +90,7 @@ class syn:
                              | cabecalho'''
         if len(p) == 3:
             p[0] = Tree('declaracao_funcao', [p[1], p[2]])
-        elif len(p) == 2:
+        else:
             p[0] = Tree('declaracao_funcao', [p[1]])
 
     #Dar uma olhada se precisa colocar pincipal abre paren
@@ -113,7 +116,7 @@ class syn:
     def p_corpo(self, p):
         '''corpo : corpo acao
                  | vazio '''
-        if len(p) == 2:
+        if len(p) == 3:
             p[0] = Tree('corpo', [p[1]], p[2])
         else:
             p[0] = Tree('corpo', [p[1]])
@@ -209,7 +212,7 @@ class syn:
         p[0] = Tree('chamada_funcao', [p[3]], p[1])
     
     def p_lista_argumentos(self, p):
-        '''lista_argumentos : lista_argumento VIRGULA expressao
+        '''lista_argumentos : lista_argumentos VIRGULA expressao
                             | expressao
                             | vazio'''
         if len(p) == 2:
@@ -253,3 +256,18 @@ class syn:
         '''expressao_unaria : fator'''
         p[0] = Tree('expressao_unaria', [p[1]]) 
     
+    def p_vazio(self, p):
+        '''vazio : '''
+        p[0] = Tree('vazio', [None])
+
+    def p_erro(self, p):
+        if p:
+            print("Erro Sintatico: %s" %(p.value))
+            exit(1)
+        else:
+            print("Erro Fatal!@")
+            exit(1)
+    
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        l = Syn()

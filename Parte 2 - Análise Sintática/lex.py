@@ -51,7 +51,6 @@ class Lex:
             'E_LOGICO',
             'OU_LOGICO',
             'NEGACAO',
-            'QUEBRA_LINHA',
             'DIFERENTE'
             ]
 
@@ -98,9 +97,8 @@ class Lex:
         pass
 
     def t_error(self, t):
-        print("Erro", t.value[0])
-        raise SyntaxError("ERRO", t.value[0])
-        t.lexer.skip(1)
+        print("Erro de caracter", t.value[0])
+        t.lex.skip(1)
 
     def print_tk(self, tk):
         lex.input(tk)
