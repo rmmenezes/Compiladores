@@ -54,7 +54,7 @@ class Lex:
             'DIFERENTE'
             ]
 
-    t_ignore = " \t\n"
+    t_ignore = " \t"
 
     ##operadores
     t_MAIS = r'\+'
@@ -99,6 +99,11 @@ class Lex:
     def t_error(self, t):
         print("Erro de caracter", t.value[0])
         t.lex.skip(1)
+
+    def t_newline(self, t):
+        r'\n+'
+        t.lexer.lineno += len(t.value)
+        
 
     def print_tk(self, tk):
         lex.input(tk)

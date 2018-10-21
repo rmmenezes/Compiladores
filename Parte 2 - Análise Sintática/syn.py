@@ -49,7 +49,7 @@ class Syn:
 
     def p_declaracao_variaveis(self, p):
         '''declaracao_variaveis : tipo DOIS_PONTOS lista_variaveis'''
-        p[0] = Tree('declaracao_variaveis', [p[1], p[3]])
+        p[0] = Tree('declaracao_variaveis', [p[1], p[3]], p[2])
 
 
     def p_inicializacao_variaveis(self, p):
@@ -264,7 +264,7 @@ class Syn:
 
     def p_error(self, p):
         if p:
-            print("Erro Sintatico: %s" %(p.value))
+            print("Erro Sintatico: %s na linha %d" %(p.value, p.lineno))
             exit(1)
         else:
             print("Erro Fatal!@")
@@ -299,6 +299,6 @@ if __name__ == '__main__':
         dot = Digraph(comment='TREE')
         print_tree(syn.ps, dot)
         print(dot.source)
-        dot.render('PrintArvore/Saida' + str(now.day) + str(now.month) + str(now.year) + 'h' + str(now.hour) + 'mm' + str(now.minute) + '.gv.pdf', view=True)
+        dot.render('PrintArvore/Saida'+str(sys.argv[1])+str(now.day)+'-'+str(now.month)+'-'+ str(now.year)+'h'+ str(now.hour)+'m'+str(now.minute)+'s'+str(now.second)+'.gv.pdf', view=True)
     else:
         print("Erro de arquivo XD!")
