@@ -1,4 +1,3 @@
-
 inteiro principal()
 
 fim

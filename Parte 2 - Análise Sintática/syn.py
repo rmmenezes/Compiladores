@@ -3,6 +3,7 @@ from lex import Lex
 from graphviz import Digraph
 import sys
 import ply.lex as lex
+from datetime import datetime
 
 class Tree:
     def __init__(self, type_node='', child=[], value=''):
@@ -26,7 +27,7 @@ class Syn:
         arq = open(sys.argv[1], 'r', encoding='utf-8')
         data = arq.read()
         parser = yacc.yacc(debug=False, module=self, optimize=False)
-        self.ast = parser.parse(data)
+        self.ps = parser.parse(data)
     
     def p_programa(self, p):
         '''programa : lista_declaracoes'''
@@ -48,7 +49,7 @@ class Syn:
 
     def p_declaracao_variaveis(self, p):
         '''declaracao_variaveis : tipo DOIS_PONTOS lista_variaveis'''
-        p[0] = Tree('declaracao_variaveis', [p[1]])
+        p[0] = Tree('declaracao_variaveis', [p[1], p[3]])
 
 
     def p_inicializacao_variaveis(self, p):
@@ -79,11 +80,11 @@ class Syn:
         else:
             p[0] = Tree('indice', [p[2]])
 
-
+########
     def p_tipo(self, p):
         '''tipo : INTEIRO
                 | FLUTUANTE'''
-        p[0] = Tree('tipo', [])
+        p[0] = Tree('tipo', [], p[1])
 
     def p_declaracao_funcao(self, p):
         '''declaracao_funcao : tipo cabecalho
@@ -109,12 +110,15 @@ class Syn:
 
     def p_parametro(self, p):
         '''parametro : tipo DOIS_PONTOS ID
-                        |  parametro ABRE_COUCH FECHA_COUCH '''
-        p[0] = Tree('parametro', [p[1]], p[3])
+                     |  parametro ABRE_COUCH FECHA_COUCH'''
+        if p[2] == 'DOIS_PONTOS':
+            p[0] = Tree('parametro', [p[1]], p[3])
+        else:
+            p[0] = Tree('parametro', [p[1]])
 
     def p_corpo(self, p):
         '''corpo : corpo acao
-                 | vazio '''
+                 | vazio'''
         if len(p) == 3:
             p[0] = Tree('corpo', [p[1], p[2]])
         else:
@@ -138,7 +142,6 @@ class Syn:
         else:
             p[0] = Tree('se', [p[2], p[4], p[6]])
 
-
     def p_repita(self, p):
         '''repita : REPITA corpo ATE expressao'''
         p[0] = Tree('repita', [p[2], p[4]])
@@ -152,7 +155,7 @@ class Syn:
         p[0] = Tree('leia', [p[3]])
 
     def p_escreva(self, p):
-            ''' escreva : ESCREVA ABRE_PAREN expressao FECHA_PAREN '''
+            '''escreva : ESCREVA ABRE_PAREN expressao FECHA_PAREN '''
             p[0] = Tree('escreva', [p[3]])
 
     def p_retorna(self, p):
@@ -161,7 +164,7 @@ class Syn:
 
     def p_expressao(self, p):
         '''expressao : expressao_logica
-                        | atribuicao '''
+                     | atribuicao'''
         p[0] = Tree('expressao', [p[1]])
 
     def p_operador_relacional(self, p):
@@ -171,12 +174,12 @@ class Syn:
                                | DIFERENTE
                                | MENOR_IGUAL
                                | MAIOR_IGUAL'''
-        p[0] = Tree('operador_relacional', [p[1]])
+        p[0] = Tree('operador_relacional', [], str(p[1]))
 
     def p_operador_soma(self, p):
         '''operador_soma : MAIS
                          | MENOS'''
-        p[0] = Tree('operador_soma', [p[1]])
+        p[0] = Tree('operador_soma', [], str(p[1]))
     
     def p_operador_logico(self, p):
         '''operador_logico : E_LOGICO
@@ -186,9 +189,8 @@ class Syn:
     def p_operador_multiplicacao(self, p):
         '''operador_multiplicacao : MULT
                                   | DIVIDE'''
-        p[0] = Tree('operador_multiplicacao', [p[1]])
+        p[0] = Tree('operador_multiplicacao', [], str(p[1]))
         
-    
     def p_fator(self, p):
         '''fator : ABRE_PAREN expressao FECHA_PAREN
                  | var
@@ -201,7 +203,7 @@ class Syn:
         
     def p_numero(self, p):
         '''numero : NUMERO'''
-        p[0] = Tree('numero', [], p[1])
+        p[0] = Tree('numero', [], str(p[1]))
     
     def p_chamada_funcao(self, p):
         '''chamada_funcao : ID ABRE_PAREN lista_argumentos FECHA_PAREN'''
@@ -249,9 +251,13 @@ class Syn:
             p[0] = Tree('expressao_multiplicativa', [p[1], p[2], p[3]])                    
 
     def p_expressao_unaria(self, p):
-        '''expressao_unaria : fator'''
-        p[0] = Tree('expressao_unaria', [p[1]]) 
-    
+        '''expressao_unaria : fator
+                            | operador_soma fator'''
+        if len(p) == 2:
+            p[0] = Tree('expressao_unaria', [p[1]])
+        else:
+            p[0] = Tree('expressao_unaria', [p[1], p[2]])
+
     def p_vazio(self, p):
         '''vazio : '''
         p[0] = Tree('vazio', [None])
@@ -287,11 +293,12 @@ def print_tree(node, dot, i="0", pai=None):
 
 
 if __name__ == '__main__':
+    now = datetime.now()
     if len(sys.argv) > 1:
-        l = Syn()
-        dot = Digraph(comment='The Round Table')
-        print_tree(l.ast, dot)
-        print(dot.source)  # doctest: +NORMALIZE_WHITESPACE
-        dot.render('test-output/round-table.gv.pdf', view=True)  # doctest: +SKIP
+        syn = Syn()
+        dot = Digraph(comment='TREE')
+        print_tree(syn.ps, dot)
+        print(dot.source)
+        dot.render('PrintArvore/Saida' + str(now.day) + str(now.month) + str(now.year) + 'h' + str(now.hour) + 'mm' + str(now.minute) + '.gv.pdf', view=True)
     else:
         print("Erro de arquivo XD!")
