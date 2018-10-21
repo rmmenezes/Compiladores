@@ -1,9 +1,12 @@
+### Rafael Menzes Barboza, RA: 1817485 ###
 import ply.yacc as yacc
 from lex import Lex
 from graphviz import Digraph
 import sys
 import ply.lex as lex
 from datetime import datetime
+
+global TIPO_ERRO
 
 class Tree:
     def __init__(self, type_node='', child=[], value=''):
@@ -28,7 +31,10 @@ class Syn:
         data = arq.read()
         parser = yacc.yacc(debug=False, module=self, optimize=False)
         self.ps = parser.parse(data)
-    
+
+    ###################################
+    ###### DECLARAÇÂO DAS REGRAS ######
+    ###################################
     def p_programa(self, p):
         '''programa : lista_declaracoes'''
         p[0] = Tree('programa', [p[1]])
@@ -80,7 +86,6 @@ class Syn:
         else:
             p[0] = Tree('indice', [p[2]])
 
-########
     def p_tipo(self, p):
         '''tipo : INTEIRO
                 | FLUTUANTE'''
@@ -94,7 +99,6 @@ class Syn:
         else:
             p[0] = Tree('declaracao_funcao', [p[1]])
 
-    #Dar uma olhada se precisa colocar pincipal abre paren
     def p_cabecalho(self, p):
         '''cabecalho : ID ABRE_PAREN lista_parametros FECHA_PAREN corpo FIM'''
         p[0] = Tree('cabecalho', [p[3], p[5]], p[1])
@@ -155,12 +159,12 @@ class Syn:
         p[0] = Tree('leia', [p[3]])
 
     def p_escreva(self, p):
-            '''escreva : ESCREVA ABRE_PAREN expressao FECHA_PAREN '''
-            p[0] = Tree('escreva', [p[3]])
+        '''escreva : ESCREVA ABRE_PAREN expressao FECHA_PAREN '''
+        p[0] = Tree('escreva', [p[3]])
 
     def p_retorna(self, p):
-            '''retorna : RETORNA ABRE_PAREN expressao FECHA_PAREN '''
-            p[0] = Tree('retorna', [p[3]])
+        '''retorna : RETORNA ABRE_PAREN expressao FECHA_PAREN '''
+        p[0] = Tree('retorna', [p[3]])
 
     def p_expressao(self, p):
         '''expressao : expressao_logica
@@ -183,8 +187,9 @@ class Syn:
     
     def p_operador_logico(self, p):
         '''operador_logico : E_LOGICO
-                           | OU_LOGICO'''
-        p[0] = Tree('operador_logico', [p[1]])
+                           | OU_LOGICO
+                           | NEGACAO'''
+        p[0] = Tree('operador_logico', [], str(p[1]))
 
     def p_operador_multiplicacao(self, p):
         '''operador_multiplicacao : MULT
@@ -260,15 +265,128 @@ class Syn:
 
     def p_vazio(self, p):
         '''vazio : '''
-        p[0] = Tree('vazio', [None])
+        p[0] = Tree('vazio')
+        pass
 
+    ###################################
+    ####### DECLARAÇÂO DE ERROR #######
+    ###################################
     def p_error(self, p):
         if p:
-            print("Erro Sintatico: %s na linha %d" %(p.value, p.lineno))
-            exit(1)
+            print("Erro Sintatico: '%s' na linha '%d'" %(p.value, p.lineno))
         else:
             print("Erro Fatal!@")
-            exit(1)
+    
+    def p_leia_error(self, p):
+        '''leia : LEIA ABRE_PAREN error FECHA_PAREN'''
+        print("NAO FOI POSSIVEL REALIZAR A LEITURA (ARGUMENTO INVALIDO)")
+        exit(1)
+
+    def p_escreva_error(self, p):
+        '''escreva : ESCREVA ABRE_PAREN error FECHA_PAREN '''
+        print("NAO FOI POSSIVEL REALIZAR A ESCRITA (ARGUMENTO INVALIDO)")
+        exit(1)
+
+    def p_retorna_error(self, p):
+        '''retorna : RETORNA ABRE_PAREN error FECHA_PAREN'''
+        print("NAO FOI POSSIVEL REALIZAR A RETORNO (ARGUMENTO INVALIDO)")
+        exit(1)
+
+    def p_declaracao_variaveis_error(self, p):
+        '''declaracao_variaveis : error DOIS_PONTOS lista_variaveis
+                                | tipo DOIS_PONTOS error'''
+        print("ERRO EM DECLARAÇÃO DE VARIAVEIS")
+        exit(1)
+        
+    def p_atribuicao_error(self, p):
+        '''atribuicao : var ATRIBUICAO error
+                      | error ATRIBUICAO expressao'''
+        print("ERRO EM ATRIBUIÇÃO")
+        exit(1)
+    
+    def p_lista_declaracoes_error(self, p):
+        '''lista_declaracoes : error error
+                             | error'''
+        print("ERRO NA LISTA DE DECLACAÇÃO")
+        exit(1)
+
+    def p_indice_error(self, p):
+        '''indice : indice ABRE_COUCH error FECHA_COUCH
+                  | ABRE_COUCH error FECHA_COUCH'''
+        print("ERRO DE INDICE")
+        exit(1)
+    
+    def p_acao_error(self, p):
+        '''acao : error'''
+        print("ERRO DE AÇÃO")
+        exit(1)
+
+
+    def p_cabecalho_error(self, p):
+        '''cabecalho : ID ABRE_PAREN lista_parametros FECHA_PAREN error FIM'''
+        print("ERRO NO CABECALHO DA FUNÇÃO")
+        exit(1)
+
+    def p_repita_error(self, p):
+        '''repita : REPITA error ATE error'''
+        print("ERRO NO LAÇO 'REPITA' VERIFIQUE SEUS ARGUMENTOS")
+        exit(1)
+
+    def p_declaracao_error(self, p):
+        '''declaracao : error'''
+        print("ERRO DE DECLARAÇÃO")
+        exit(1)
+    
+    def p_inicializacao_variaveis_error(self, p):
+        '''inicializacao_variaveis : error'''
+        print("ERRO NA INICIALIZAÇÃO DE VARIAVEL")
+        exit(1)
+    
+    def p_lista_variaveis_error(self, p):
+        '''lista_variaveis : error VIRGULA error
+                           | error'''
+        print("ERRO EM VARIAVEL")
+        exit(1)
+    
+    def p_var_error(self, p):
+        '''var : ID error'''
+        print("ERRO EM VARIAVEL")
+        exit(1)
+
+    def p_declaracao_funcao_error(self, p):
+        '''declaracao_funcao : error error
+                             | error'''
+        print("ERRO NA DECLARAÇÃO DE FUNÇÃO")
+        exit(1)
+    
+    def p_lista_parametros_error(self, p):
+        '''lista_parametros : error VIRGULA error
+                            | error '''
+        print("ERRO NA LISTA DE PARAMETROS")
+        exit(1)
+    
+    def p_corpo_error(self, p):
+        '''corpo : error error
+                 | error'''
+        print("ERRO NO CORPO DA FUNÇÃO")
+        exit(1)
+    
+    def p_se_error(self, p):
+        '''se : SE error ENTAO error FIM
+              | SE error ENTAO error SENAO error FIM'''
+        print("ERRO NA CONDIÇÃO 'SE' VERIFIQUE SEUS ARGUMENTOS E O CORPO DA CONDIÇÃO")
+        exit(1)
+
+    def p_expressao_error(self, p):
+        '''expressao : error'''
+        print("ERRO NA EXPRESSÃO")
+        exit(1)
+
+    def p_expressao_simples_error(self,p):
+        '''expressao_simples : error
+                             | error error error'''
+        print("ERRO NA EXPRESSÃO")
+        exit(1)
 
 # def print_tree(node, dot, i):
 #     if node != None:
