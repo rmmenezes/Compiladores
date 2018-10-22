@@ -1,19 +1,21 @@
-inteiro principal()
-	inteiro: digitado
-	inteiro: i
-	i := 1
-	repita
-		flutuante: f
-		inteiro: int
-		flutuante: resultado
-		f := i/2.0
-		int := i/2
-		resultado := f - int
-		
-		se  resultado > 0 então
-			escreva (i)
-		fim
-		i := i+1
-	até i <= digitado
+inteiro: n
+
+inteiro fatorial(inteiro: n)
+    inteiro: fat
+    se n > 0 então {não calcula se n > 0}
+        fat := 1
+        repita
+            fat := fat * n
+            n := n - 1
+        até n = 0
+        retorna(fat) {retorna o valor do fatorial de n}
+    senão
+    	retorna(0)
+    fim
 fim
 
+inteiro principal()
+    leia(n)
+    escreva(fatorial(n))
+    retorna(0)
+fim

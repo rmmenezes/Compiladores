@@ -76,7 +76,7 @@ class Syn:
         if len(p) == 2:
             p[0] = Tree('var', [], p[1])
         else:
-            p[0] = Tree('var', [p[2]], p[1])
+            p[0] = Tree('var', [str(p[2])], p[1])
 
     def p_indice(self, p):
         '''indice : indice ABRE_COUCH expressao FECHA_COUCH
@@ -89,7 +89,7 @@ class Syn:
     def p_tipo(self, p):
         '''tipo : INTEIRO
                 | FLUTUANTE'''
-        p[0] = Tree('tipo', [], p[1])
+        p[0] = Tree('tipo', [], str(p[1]))
 
     def p_declaracao_funcao(self, p):
         '''declaracao_funcao : tipo cabecalho
@@ -200,15 +200,20 @@ class Syn:
         '''fator : ABRE_PAREN expressao FECHA_PAREN
                  | var
                  | chamada_funcao
-                 | numero'''
+                 | numero_int
+                 | numero_float'''
         if len(p) == 2:
             p[0] = Tree('fator', [p[1]])
         else:
             p[0] = Tree('fator', [p[2]])
         
-    def p_numero(self, p):
-        '''numero : NUMERO'''
-        p[0] = Tree('numero', [], str(p[1]))
+    def p_numero_int(self, p):
+        '''numero_int : INTEIRO'''
+        p[0] = Tree('numero_int', [], p[1])
+    
+    def p_numero_float(self, p):
+        '''numero_float : FLUTUANTE'''
+        p[0] = Tree('numero_float', [], p[1])
     
     def p_chamada_funcao(self, p):
         '''chamada_funcao : ID ABRE_PAREN lista_argumentos FECHA_PAREN'''
@@ -293,8 +298,7 @@ class Syn:
         exit(1)
 
     def p_declaracao_variaveis_error(self, p):
-        '''declaracao_variaveis : error DOIS_PONTOS lista_variaveis
-                                | tipo DOIS_PONTOS error'''
+        '''declaracao_variaveis : error DOIS_PONTOS lista_variaveis'''
         print("ERRO EM DECLARAÇÃO DE VARIAVEIS")
         exit(1)
         
@@ -345,12 +349,7 @@ class Syn:
     def p_lista_variaveis_error(self, p):
         '''lista_variaveis : error VIRGULA error
                            | error'''
-        print("ERRO EM VARIAVEL")
-        exit(1)
-    
-    def p_var_error(self, p):
-        '''var : ID error'''
-        print("ERRO EM VARIAVEL")
+        print("ERRO EM LISTA DE VARIAVEL")
         exit(1)
 
     def p_declaracao_funcao_error(self, p):

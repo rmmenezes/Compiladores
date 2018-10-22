@@ -46,7 +46,6 @@ class Lex:
             'INTEIRO',
             'FLUTUANTE',
             'COMPARACAO',
-            'NUMERO',
             'RETORNA',
             'E_LOGICO',
             'OU_LOGICO',
@@ -84,7 +83,9 @@ class Lex:
     t_DOIS_PONTOS = r':'
     t_VIRGULA = r','
 
-    t_NUMERO = r'([0-9]+)(\.[0-9]+)?([e|E][+|-]?[0-9]+)?'
+    #NUMEROS
+    t_INTEIRO = r'\d+'
+    t_FLUTUANTE = r'([0-9]+(\.[0-9]+)(e(\+|\-)?(\d+))?)|([0-9]+(e(\+|\-)(\d+)))'
 
 
     def t_ID(self, t):

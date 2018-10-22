@@ -1,5 +1,5 @@
-inteiro: vet[10]
-inteiro: tam
+numero : vet[10]
+numero : tam
 
 tam := 10
 

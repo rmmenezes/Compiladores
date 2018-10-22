@@ -1,15 +1,14 @@
 inteiro: n
-flutuante: a[10]
 
 inteiro fatorial(inteiro: n)
     inteiro: fat
-    se n > 0 então {não calcula se n > 0}
+    se n > 0 então 
         fat := 1
         repita
             fat := fat * n
             n := n - 1
         até n = 0
-        retorna(fat) {retorna o valor do fatorial de n}
+        retorna(fat)
     senão
         retorna(0)
     fim
@@ -20,4 +19,3 @@ inteiro principal()
     escreva(fatorial(n))
     retorna(0)
 fim
-

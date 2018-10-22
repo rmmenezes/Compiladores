@@ -1,21 +1,25 @@
-flutuante: V[100]
-flutuante: V2[100]
+inteiro: T 
+T:= 4
 
-multivet(inteiro: t)
-	inteiro: i
+inteiro: V1[T]
+
+inteiro somavet(inteiro: vet[], inteiro: tam)
+	inteiro: result 
+	result := 0
+
+	inteiro: i 
 	i := 0
+
 	repita
-		V2[i] = V[i] * 2
+		result := result + vet[i]
 		i := i + 1
-	até i = t
+	até i = tam - 1
+
+	retorna(result)	
 fim
 
 inteiro principal ()
-	inteiro: i
-	i := 0
-	repita
-		V[i] := i+1
-		i := i + 1
-	até i = 100
-
-	multivet(100)
+	inteiro: x
+	x := somavet(V1,T)
+	retorna(0)
+fim
