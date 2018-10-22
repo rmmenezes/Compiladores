@@ -1,3 +1,0 @@
-inteiro principal()
-
-fim
