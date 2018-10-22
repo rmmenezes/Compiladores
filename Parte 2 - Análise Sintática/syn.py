@@ -76,7 +76,7 @@ class Syn:
         if len(p) == 2:
             p[0] = Tree('var', [], p[1])
         else:
-            p[0] = Tree('var', [str(p[2])], p[1])
+            p[0] = Tree('var', [p[2]], p[1])
 
     def p_indice(self, p):
         '''indice : indice ABRE_COUCH expressao FECHA_COUCH
@@ -387,14 +387,6 @@ class Syn:
         print("ERRO NA EXPRESSÃO")
         exit(1)
 
-# def print_tree(node, dot, i):
-#     if node != None:
-#         ##print("%s %s %s" %(level, node.type, node.value))
-#         for son in node.child:
-#             pai = str(node) + " " + str(i-1)
-#             filho = str(node) + " " + str(i)
-#             dot.edge(pai, filho)
-#             print_tree(son, dot, i+1) 
 
 def print_tree(node, dot, i="0", pai=None):
     if node != None:
