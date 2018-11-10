@@ -1,0 +1,78 @@
+// TREE
+digraph {
+	programa0 [label=programa]
+	lista_declaracoes001 [label=lista_declaracoes]
+	programa0 -> lista_declaracoes001
+	lista_declaracoes00101 [label=lista_declaracoes]
+	lista_declaracoes001 -> lista_declaracoes00101
+	lista_declaracoes0010101 [label=lista_declaracoes]
+	lista_declaracoes00101 -> lista_declaracoes0010101
+	declaracao001010101 [label=declaracao]
+	lista_declaracoes0010101 -> declaracao001010101
+	declaracao_variaveis00101010101 [label=declaracao_variaveis]
+	declaracao001010101 -> declaracao_variaveis00101010101
+	tipo0010101010101 [label=tipo]
+	declaracao_variaveis00101010101 -> tipo0010101010101
+	inteiro001010101010101 [label=inteiro]
+	tipo0010101010101 -> inteiro001010101010101
+	lista_variaveis00101010101011 [label=lista_variaveis]
+	declaracao_variaveis00101010101 -> lista_variaveis00101010101011
+	var0010101010101101 [label=var]
+	lista_variaveis00101010101011 -> var0010101010101101
+	a001010101010110101 [label=a]
+	var0010101010101101 -> a001010101010110101
+	declaracao00101011 [label=declaracao]
+	lista_declaracoes00101 -> declaracao00101011
+	inicializacao_variaveis0010101101 [label=inicializacao_variaveis]
+	declaracao00101011 -> inicializacao_variaveis0010101101
+	atribuicao001010110101 [label=atribuicao]
+	inicializacao_variaveis0010101101 -> atribuicao001010110101
+	var00101011010101 [label=var]
+	atribuicao001010110101 -> var00101011010101
+	a0010101101010101 [label=a]
+	var00101011010101 -> a0010101101010101
+	expressao001010110101011 [label=expressao]
+	atribuicao001010110101 -> expressao001010110101011
+	expressao_logica00101011010101101 [label=expressao_logica]
+	expressao001010110101011 -> expressao_logica00101011010101101
+	expressao_simples0010101101010110101 [label=expressao_simples]
+	expressao_logica00101011010101101 -> expressao_simples0010101101010110101
+	expressao_aditiva001010110101011010101 [label=expressao_aditiva]
+	expressao_simples0010101101010110101 -> expressao_aditiva001010110101011010101
+	expressao_multiplicativa00101011010101101010101 [label=expressao_multiplicativa]
+	expressao_aditiva001010110101011010101 -> expressao_multiplicativa00101011010101101010101
+	expressao_unaria0010101101010110101010101 [label=expressao_unaria]
+	expressao_multiplicativa00101011010101101010101 -> expressao_unaria0010101101010110101010101
+	fator001010110101011010101010101 [label=fator]
+	expressao_unaria0010101101010110101010101 -> fator001010110101011010101010101
+	numero_int00101011010101101010101010101 [label=numero_int]
+	fator001010110101011010101010101 -> numero_int00101011010101101010101010101
+	100010101101010110101010101010101 [label=10]
+	numero_int00101011010101101010101010101 -> 100010101101010110101010101010101
+	declaracao001011 [label=declaracao]
+	lista_declaracoes001 -> declaracao001011
+	declaracao_funcao00101101 [label=declaracao_funcao]
+	declaracao001011 -> declaracao_funcao00101101
+	tipo0010110101 [label=tipo]
+	declaracao_funcao00101101 -> tipo0010110101
+	inteiro001011010101 [label=inteiro]
+	tipo0010110101 -> inteiro001011010101
+	cabecalho00101101011 [label=cabecalho]
+	declaracao_funcao00101101 -> cabecalho00101101011
+	principal0010110101101 [label=principal]
+	cabecalho00101101011 -> principal0010110101101
+	"(00101101011011" [label="("]
+	cabecalho00101101011 -> "(00101101011011"
+	lista_parametros001011010110111 [label=lista_parametros]
+	cabecalho00101101011 -> lista_parametros001011010110111
+	vazio00101101011011101 [label=vazio]
+	lista_parametros001011010110111 -> vazio00101101011011101
+	")0010110101101111" [label=")"]
+	cabecalho00101101011 -> ")0010110101101111"
+	corpo00101101011011111 [label=corpo]
+	cabecalho00101101011 -> corpo00101101011011111
+	vazio0010110101101111101 [label=vazio]
+	corpo00101101011011111 -> vazio0010110101101111101
+	fim001011010110111111 [label=fim]
+	cabecalho00101101011 -> fim001011010110111111
+}
