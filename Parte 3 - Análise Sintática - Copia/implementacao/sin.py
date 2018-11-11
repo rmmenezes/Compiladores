@@ -2,22 +2,19 @@
 from syn import * ## importar o arquivo syn.py
 global pilhaEscopos
 pilhaEscopos = ['global']
-global TemPrincipal
-TemPrincipal = False
 
 class Verifica_Arvore():
     def andar(self, raiz, TabSimb):
         if raiz and len(raiz.child)>=1:
             for filho in raiz.child:
-                print (filho)
                 if filho.type == "declaracao_variaveis":
                    self.declaracao_variaveis(filho, TabSimb)
                 elif filho.type == "declaracao_funcao":
                     self.declaracao_funcao(filho, TabSimb)
                 elif filho.type == "expressao":
                     self.expressao(filho, TabSimb)
-                elif filho.value == "fim":
-                   self.fecha_escopo(filho)
+               # elif filho.value == "fim":
+               #    self.fecha_escopo(filho)
                     
                 if not isinstance(filho, Tree): return
                 self.andar(filho, TabSimb)
@@ -28,16 +25,17 @@ class Verifica_Arvore():
         if no.type == "declaracao_funcao":
             if len(no.child) > 1:                     #Se existe tipo de retorno definido 
                 nome_funcao = no.child[1].value
-                tipo_funcao = no.child[0].value
-                if nome_funcao == 'principal':
-                    TemPrincipal = True
+                tipo_funcao = no.child[0].value     
                 lista_paramentros = self.cabecalho(no.child[1])
+                TabSimb.verifica_declaracao_funcao(nome_funcao)
                 TabSimb.inserir_funcao(nome_funcao, tipo_funcao, None, lista_paramentros)
             else:                                     #Se o tipo de retorno é void
                 nome_funcao = no.child[0].value
                 tipo_funcao = 'void'
                 lista_paramentros = self.cabecalho(no.child[0])
+                TabSimb.verifica_declaracao_funcao(nome_funcao)
                 TabSimb.inserir_funcao(nome_funcao, tipo_funcao, None, lista_paramentros)
+                
                 
 
     def cabecalho(self, no):
@@ -54,7 +52,7 @@ class Verifica_Arvore():
 
 
     def expressao_logica(self, filho, TabSimb):
-        if (filho.type == "expressao_logica"):
+        if filho.type == "expressao_logica":
             var1 = self.ir_para_folha(filho.child[0])
             var2 = self.ir_para_folha(filho.child[2])
             #operador_logico = self.ir_para_folha(filho.child[1])
@@ -66,9 +64,56 @@ class Verifica_Arvore():
                 print("Warning: elementos de tipos diferentes na expressão logica (esta sendo realizado um parse)")
                 e_var2.set_tipo(e_var2, e_var1.get_tipo(e_var1))
 
-            
 
-            
+
+    def expressao_unaria(self, filho, TabSimb):
+        if filho.type == "expressao_unaria":
+            op_unitario = filho.child[0].value
+            var = self.ir_para_folha(filho.child[1])
+            elemento = TabSimb.find_elemento(var)
+            TabSimb.set_sinal(elemento, op_unitario)
+            print(op_unitario + var)
+
+    def expressao_multiplicativa(self, filho, TabSimb):
+        if filho.type == "expressao_multiplicativa":
+            var1 = self.ir_para_folha(filho.child[0])
+            var2 = self.ir_para_folha(filho.child[2])
+            #op_multiplicativo = filho.child[1].value
+            e_var1 = TabSimb.find_elemento(var1, None)
+            e_var2 = TabSimb.find_elemento(var2, None)
+            e_var1.set_uso(e_var1, True)
+            e_var2.set_uso(e_var2, True)
+            if e_var1.get_tipo(e_var1) != e_var2.get_tipo(e_var2):
+                print("Warning: elementos de tipos diferentes na expressão multiplicativa (esta sendo realizado um parse)")
+                e_var2.set_tipo(e_var2, e_var1.get_tipo(e_var1))
+
+    def expressao_simples(self, filho, TabSimb):
+        if filho.type == "expressao_simples":
+                var1 = self.ir_para_folha(filho.child[0])
+                var2 = self.ir_para_folha(filho.child[2])
+                #op_relacional = filho.child[1].value
+                e_var1 = TabSimb.find_elemento(var1, None)
+                e_var2 = TabSimb.find_elemento(var2, None)
+                e_var1.set_uso(e_var1, True)
+                e_var2.set_uso(e_var2, True)
+                if e_var1.get_tipo(e_var1) != e_var2.get_tipo(e_var2):
+                    print("Warning: elementos de tipos diferentes na expressão (esta sendo realizado um parse)")
+                    e_var2.set_tipo(e_var2, e_var1.get_tipo(e_var1))
+
+    def expressao_aditiva(self, filho, TabSimb):
+        if filho.type == "expressao_aditiva":
+                var1 = self.ir_para_folha(filho.child[0])
+                var2 = self.ir_para_folha(filho.child[2])
+                #op_aditivo = filho.child[1].value
+                e_var1 = TabSimb.find_elemento(var1, None)
+                e_var2 = TabSimb.find_elemento(var2, None)
+                e_var1.set_uso(e_var1, True)
+                e_var2.set_uso(e_var2, True)
+                if e_var1.get_tipo(e_var1) != e_var2.get_tipo(e_var2):
+                    print("Warning: elementos de tipos diferentes na expressão (esta sendo realizado um parse)")
+                    e_var2.set_tipo(e_var2, e_var1.get_tipo(e_var1))
+
+
     def ir_para_folha(self, filho):
         if len(filho.child) <= 0:
             return filho.value
@@ -80,16 +125,15 @@ class Verifica_Arvore():
             if filho.child[0].type == "atribuicao":
                 self.atribuicao(filho.child[0], TabSimb)
             elif filho.child[0].type == "expressao_logica" and len(filho.child[0].child)>1 :
-                print ("################ Operação Logica ##############")
                 self.expressao_logica(filho.child[0], TabSimb)
             elif filho.child[0].child[0].type == "expressao_simples" and len(filho.child[0].child[0].child)>1 :
-                print ("################ expressao_simples ##############")
+                self.expressao_simples(filho.child[0].child[0], TabSimb)
             elif filho.child[0].child[0].child[0].type == "expressao_aditiva" and len(filho.child[0].child[0].child[0].child)>1 :
-                print ("################ Operação Aditiva ##############")
+                self.expressao_aditiva(filho.child[0].child[0].child[0], TabSimb)
             elif filho.child[0].child[0].child[0].child[0].type == "expressao_multiplicativa" and len(filho.child[0].child[0].child[0].child[0].child)>1 :
-                print ("################ Operação Multiplicativa ##############")
+                self.expressao_multiplicativa(filho.child[0].child[0].child[0].child[0], TabSimb)
             elif filho.child[0].child[0].child[0].child[0].child[0].type == "expressao_unaria" and len(filho.child[0].child[0].child[0].child[0].child[0].child)>1 :
-                print ("################ Expressao unitaria ##############")
+                self.expressao_unaria(filho.child[0].child[0].child[0].child[0].child[0], TabSimb)
 
     
    
@@ -139,8 +183,8 @@ class ListaFuncoes():
         pilhaEscopos.append(nome)
 
 
-
 class TabelaSimbolos():
+    TemPrincipal = False
     def __init__(self):
         self.lista_elementos = []
         self.lista_funcoes = []
@@ -152,6 +196,7 @@ class TabelaSimbolos():
         self.lista_funcoes.append(ListaFuncoes(nome, tipo_retorno, valor_retorno, lista_paramentros, pilhaEscopos[-1]))
 
     def print_pilha(self):
+        print ("### PILHA DE ESCOPOS ###")
         for elemento in pilhaEscopos:
             print(elemento)
 
@@ -161,6 +206,14 @@ class TabelaSimbolos():
                 if elemento.nome == var and elemento.escopo == escopo:
                     return elemento
         return None
+    
+    def verifica_declaracao_funcao(self, nome_funcao):
+        if nome_funcao == "principal":
+            self.TemPrincipal = True
+        for funcao in self.lista_funcoes:
+            if(funcao.nome == nome_funcao):
+                print ("Erro: Existem funçoes duplicadas no programa")
+                exit(1)
     
     def atribuicao_elemento(self, var, valor):
         elemento = self.find_elemento(var, valor)
@@ -176,6 +229,22 @@ class TabelaSimbolos():
         else:
             print ("error: A variavel que deseja atribuir nao foi declarada em nenhum escopo, nem global nem local")
 
+    def set_sinal(self, elemento, op_unitario):
+        if(elemento.valor == 'null'):
+            print ("ERRO: Você ainda nao atribuio nenhum valor a esta variavel.")
+        else:
+            if elemento.get_tipo(elemento) == "inteiro":
+                elemento.valor = int(elemento.valor) * int(op_unitario) 
+                print(elemento.valor)
+            elif elemento.get_tipo(elemento) == "flutuante":
+                elemento.valor = float(elemento.valor) * float(op_unitario) 
+                print(elemento.valor)
+
+    def conferir_variaveis_usadas(self):
+        if (self.lista_elementos):
+            for elemento in self.lista_elementos:
+                if elemento.used == False:
+                    print ("Aviso: Variável '" + elemento.nome +"' declarada e não utilizada")
 
     def print_tabela_simbolos(self):
         print("### TABELA DE SIMBOLOS ###")
@@ -205,12 +274,17 @@ class Elemento():
         elemento.tipo = tipo
 
 
-
 if __name__ == '__main__':
     Sintatico = Verifica_Arvore()
     root = Syn()
     TabSimb = TabelaSimbolos()
     Sintatico.andar(root.ps, TabSimb)
-    TabSimb.print_pilha()
-    TabSimb.print_tabela_simbolos()
+    TabSimb.conferir_variaveis_usadas()     #VERIFICA SE AS VARIAVEIS SAO USADAS OU NAO
+    if(TabSimb.TemPrincipal == False):
+        print ("Erro: Função principal não declarada")
+        exit(1)
+    else:
+        TabSimb.print_pilha()
+        TabSimb.print_tabela_simbolos()
+    
     

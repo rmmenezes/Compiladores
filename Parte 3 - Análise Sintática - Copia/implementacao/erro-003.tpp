@@ -1,8 +1,14 @@
-inteiro principal()
-    inteiro: a
+inteiro pril()
+    flutuante: a
     inteiro: b
-    flutuante: g
-    g:=1
-    a:=2.96
+    a + b
+
+fim
+
+inteiro principal()
+    flutuante: a
+    inteiro: k
+    k + b
+
 fim
 
