@@ -147,10 +147,10 @@ class Verifica_Arvore():
     def declaracao_variaveis(self, no, TabSimb):
         if no.type == "declaracao_variaveis":
             x = []
-            self.pega_nome_variavel(no, x)
             tipo = self.pega_tipo_variavel(no)
+            self.pega_nome_variavel(no, x, tipo, TabSimb)
             for variavel in x:
-                TabSimb.inserir_elemento(variavel, tipo, 'null', False)
+                TabSimb.inserir_elemento(variavel, tipo, 'null', '' ,False)
 
     def fecha_escopo(self, no):
         if(no.value == "fim"):
@@ -166,12 +166,31 @@ class Verifica_Arvore():
 
     
     #PASSA O NO E RETORNA UMA LISTA COM AS VARIAVEIS DA SUB-ARVORE DEPOIS DE (delaracao_variaveis)    
-    def pega_nome_variavel(self, no, x):
+    def pega_nome_variavel(self, no, x, tipo, TabSimb):
         if no:
             for filho in no.child:
                 if(filho.type == "var"):
-                    x.append(filho.value)
-                self.pega_nome_variavel(filho, x)
+                    if len(filho.child) >= 1:
+                        self.declaracao_vetor(filho.value, tipo, self.ir_para_folha(filho.child[0]), TabSimb)
+                    else:
+                        x.append(filho.value)
+                    
+                self.pega_nome_variavel(filho, x, tipo, TabSimb)
+                
+    def str_to_number(self, s):
+        try:
+            return int(s)
+        except ValueError:
+            return float(s)
+
+    def declaracao_vetor(self, nome, tipo, indice, TabSimb):
+        n_indice = self.str_to_number(indice)
+        if(str(type(n_indice)) == "<class 'int'>"):
+            print ("DECLARACAO DE VETOR: " + nome + ":" + indice + "PORRA")
+            TabSimb.inserir_elemento(nome, tipo, 'null', indice, False)
+        else:
+            print("Erro: índice de array " + nome + " não inteiro")
+            exit(1)
 
 class ListaFuncoes():
     def __init__(self, nome, tipo_retorno, valor_retorno, lista_paramentros, escopo):
@@ -189,8 +208,8 @@ class TabelaSimbolos():
         self.lista_elementos = []
         self.lista_funcoes = []
     
-    def inserir_elemento(self, nome, tipo, valor, used):
-        self.lista_elementos.append(Elemento(nome, pilhaEscopos[-1], tipo, valor, used))
+    def inserir_elemento(self, nome, tipo, valor, indice, used):
+        self.lista_elementos.append(Elemento(nome, pilhaEscopos[-1], tipo, valor, indice, used))
 
     def inserir_funcao(self, nome, tipo_retorno, valor_retorno, lista_paramentros):
         self.lista_funcoes.append(ListaFuncoes(nome, tipo_retorno, valor_retorno, lista_paramentros, pilhaEscopos[-1]))
@@ -249,17 +268,21 @@ class TabelaSimbolos():
     def print_tabela_simbolos(self):
         print("### TABELA DE SIMBOLOS ###")
         for e in self.lista_elementos:
-            print("Tipo: " + e.tipo + " Nome: " + e.nome + " Valor: " + str(e.valor) + " Escopo: " + e.escopo + " Usada: " + str(e.used))
+            if(e.indice):
+                print("Tipo: " + e.tipo + " Nome: " + e.nome + " Indice: " + e.indice + " Valor: " + str(e.valor) + " Escopo: " + e.escopo + " Usada: " + str(e.used))
+            else:
+                print("Tipo: " + e.tipo + " Nome: " + e.nome + " Valor: " + str(e.valor) + " Escopo: " + e.escopo + " Usada: " + str(e.used))
     
 
 
 class Elemento():
-    def __init__(self, nome, escopo, tipo, valor, used):
+    def __init__(self, nome, escopo, tipo, valor, indice, used):
         self.nome = nome
         self.escopo = escopo
         self.tipo = tipo
         self.valor = valor
         self.used = used
+        self.indice = indice
 
     def set_uso(self, elemento, usado):
         elemento.used = usado
@@ -280,7 +303,7 @@ if __name__ == '__main__':
     TabSimb = TabelaSimbolos()
     Sintatico.andar(root.ps, TabSimb)
     TabSimb.conferir_variaveis_usadas()     #VERIFICA SE AS VARIAVEIS SAO USADAS OU NAO
-    if(TabSimb.TemPrincipal == False):
+    if(TabSimb.TemPrincipal == False):      #VERIFICA SE TEM A FUNÇÃO PRINCIPAL
         print ("Erro: Função principal não declarada")
         exit(1)
     else:
