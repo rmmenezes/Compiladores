@@ -17,9 +17,11 @@ class Verifica_Arvore():
                     self.retorna(filho, TabSimb)
                 elif filho.type == "chamada_funcao":
                     self.chamada_funcao(filho, TabSimb)
-               # elif filho.value == "fim":
-               #    self.fecha_escopo(filho)
-                    
+                elif filho.type == "fim":
+                   self.fecha_escopo(filho)
+                elif filho.type == "até":
+                   self.fecha_escopo(filho)
+
                 if not isinstance(filho, Tree): return
                 self.andar(filho, TabSimb)
         else:
@@ -55,13 +57,22 @@ class Verifica_Arvore():
                 indice = self.str_to_number(self.ir_para_folha(filho.child[0]))
                 valor = self.ir_para_folha(filho.child[1])
                 if(str(type(indice)) == "<class 'int'>"):
-                    TabSimb.atribuicao_elemento(var, valor, TabSimb)
+                    e = TabSimb.find_elemento(str(var))
+                    if int(float(e.indice)) > int(float(indice)):
+                        TabSimb.atribuicao_elemento(var, valor, TabSimb)
+                    else:
+                        print("Erro: o índice do vetor '" + str(var) + "'esta fora de range")
+                    
                 else:
                     print("Erro: índice de array " + var + " não inteiro")
                     exit(1)
+            elif(str(filho.child[1].type) == "expressao"):
+                variavel = str(filho.child[0].value)
+                valor = str(self.expressao(filho.child[1], TabSimb))
+                TabSimb.atribuicao_elemento(variavel, valor, TabSimb)
             else:
                 var = filho.child[0].value
-                valor = self.ir_para_folha(filho.child[1])
+                valor = self.pegar_no_folha(filho.child[1])
                 TabSimb.atribuicao_elemento(var, valor, TabSimb)
 
 
@@ -124,19 +135,50 @@ class Verifica_Arvore():
 
     def expressao_aditiva(self, filho, TabSimb):
         if filho.type == "expressao_aditiva":
-                var1 = self.ir_para_folha(filho.child[0])
-                var2 = self.ir_para_folha(filho.child[2])
-                #op_aditivo = filho.child[1].value
-                if self.i(var1) != 0 and self.i(var1) !=1 : 
-                    e_var1 = TabSimb.find_elemento(var1)
-                    e_var1.set_uso(e_var1, True)
-                else:
-                    e_var1 = self.str_to_number(var1)
-                if self.i(var2) != 0 and self.i(var2) !=1: 
-                    e_var2 = TabSimb.find_elemento(var2)
-                    e_var2.set_uso(e_var2, True)
-                else:
-                    e_var2 = self.str_to_number(var2)
+            elemento1 = self.pegar_no_folha(filho.child[0])
+            elemento2 = self.pegar_no_folha(filho.child[2])
+            print(elemento1)
+            tipo1 = None
+            tipo2 = None
+            if (str(elemento1) == "numero_int"):
+                tipo1 = "inteiro"
+                valor1 = elemento1.value
+            elif(str(elemento1) == "numero_float"):
+                tipo1 = "flutuante"
+                valor1 = elemento1.value
+            elif(str(elemento1) == "var"):
+                elemento1 = TabSimb.find_elemento(elemento1.value)
+                tipo1 = elemento1.tipo
+                valor1 = elemento1.value
+
+            if (str(elemento2) == "numero_int"):
+                tipo2 = "inteiro"
+                valor2 = elemento2.value
+            elif(str(elemento2) == "numero_float"):
+                tipo2 = "flutuante"
+                valor2 = elemento2.value
+            elif(str(elemento2) == "var"):
+                elemento1 = TabSimb.find_elemento(elemento1.value)
+                tipo2 = elemento2.tipo
+                valor2 = elemento2.value
+
+            
+            if(tipo1 == "inteiro"): 
+                valor1 = int(float(valor1))
+            elif(tipo1 == "flutuante"):   
+                valor1 = float(valor1)
+            
+            if(tipo2 == "inteiro"): 
+                valor2 = int(float(valor2))
+            elif(tipo2 == "flutuante"):   
+                valor2 = float(valor2)
+
+            soma = valor1 + valor2
+            return soma
+        else:
+            print("Erro: Na expressão de adição")
+            
+            
 
 
     def ir_para_folha(self, filho):
@@ -144,6 +186,16 @@ class Verifica_Arvore():
             return filho.value
         else:
             return self.ir_para_folha(filho.child[0])
+
+    def pegar_no_folha(self, filho):
+        if(len(filho.child) == 3):
+            return filho
+        elif(len(filho.child) == 0):
+            return filho
+        else:
+            return self.pegar_no_folha(filho.child[0])
+
+           
 
     def verificar_se_ha_chamada_funcao(self, filho):
         if filho.type == "chamada_funcao":
@@ -163,7 +215,7 @@ class Verifica_Arvore():
             elif filho.child[0].child[0].type == "expressao_simples" and len(filho.child[0].child[0].child)>1 :
                 self.expressao_simples(filho.child[0].child[0], TabSimb)
             elif filho.child[0].child[0].child[0].type == "expressao_aditiva" and len(filho.child[0].child[0].child[0].child)>1 :
-                self.expressao_aditiva(filho.child[0].child[0].child[0], TabSimb)
+                return self.expressao_aditiva(filho.child[0].child[0].child[0], TabSimb)
             elif filho.child[0].child[0].child[0].child[0].type == "expressao_multiplicativa" and len(filho.child[0].child[0].child[0].child[0].child)>1 :
                 self.expressao_multiplicativa(filho.child[0].child[0].child[0].child[0], TabSimb)
             elif filho.child[0].child[0].child[0].child[0].child[0].type == "expressao_unaria" and len(filho.child[0].child[0].child[0].child[0].child[0].child)>1 :
@@ -182,12 +234,17 @@ class Verifica_Arvore():
         if no.type == "declaracao_variaveis":
             x = []
             tipo = self.pega_tipo_variavel(no)
-            self.pega_nome_variavel(no, x, tipo, TabSimb)
+            self.pega_nome_variavel(no, x, tipo, TabSimb) #retorna um vetor com todas as variaveis
             for variavel in x:
-                TabSimb.inserir_elemento(variavel, tipo, "null", '' ,False)
+                if(TabSimb.find_elemento(variavel) != None):
+                    print("Aviso: Variável '"+ variavel + "' já declarada anteriormente")
+                else:
+                    TabSimb.inserir_elemento(variavel, tipo, "null", '' ,False)
+
+                    
 
     def fecha_escopo(self, no):
-        if(no.value == "fim"):
+        if(no.type == "fim" or no.type == "até"):
             pilhaEscopos.pop()
 
     #PASSA O NO E RETORNA O TIPO DAS VARIAVEIS DA SUB-ARVORE DEPOIS DE (delaracao_variaveis)
@@ -204,7 +261,7 @@ class Verifica_Arvore():
         if no:
             for filho in no.child:
                 if(filho.type == "var"):
-                    if len(filho.child) >= 1:
+                    if len(filho.child)>= 1:
                         self.declaracao_vetor(filho.value, tipo, self.ir_para_folha(filho.child[0]), TabSimb)
                     else:
                         x.append(filho.value)
@@ -215,25 +272,51 @@ class Verifica_Arvore():
         if no.type == "retorna":
             ultima_funcao = TabSimb.lista_funcoes[-1]
             ultima_funcao.foi_retornada = True
-            var = self.ir_para_folha(no.child[0])
-            if self.i(var) != 0 and self.i(var) !=1:
-                elemento = TabSimb.find_elemento(var)
-                print(str(elemento))
-                if(elemento):
-                    elemento.set_uso(elemento, True)
-                    if ultima_funcao.valor_retorno == elemento.tipo:
-                        print(str(ultima_funcao.valor_retorno))
-                    else:
-                        print ("Aviso: O tipo de Retorno nao é o mesmo da declaração da função")
-                else:
-                    print ("Erro: A variavel '" + var + "' ainda não foi declarada")
-                    exit(1)
-            
+            no_folha = self.pegar_no_folha(no)
+            tipo_retorno = ''
+            if(str(no_folha) == "var"):
+                elemento = TabSimb.find_elemento(no_folha.value)
+                tipo_retorno = elemento.tipo
+            elif(str(no_folha) == "numero_int"):
+                elemento = no_folha.value
+                tipo_retorno = "inteiro"
+            elif(str(no_folha) == "numero_float"):
+                elemento = no_folha.value
+                tipo_retorno = "flutuante"
+            elif(str(no_folha) == "expressao_multiplicativa"):
+                elemento1 = self.pegar_no_folha(no_folha.child[0])
+                elemento2 = self.pegar_no_folha(no_folha.child[2])
+                if (elemento1 == "numero_int"):
+                    tipo_retorno = "inteiro"
+                elif(elemento1 == "numero_float"):
+                    tipo_retorno = "flutuante"
+                elif(elemento1 == "var"):
+                    elemento1 = TabSimb.find_elemento(elemento1.value)
+                    tipo_retorno = elemento.tipo
+            elif(str(no_folha) == "expressao_aditiva"):
+                elemento1 = self.pegar_no_folha(no_folha.child[0])
+                elemento2 = self.pegar_no_folha(no_folha.child[2])
+                if (elemento1 == "numero_int"):
+                    tipo_retorno = "inteiro"
+                elif(elemento1 == "numero_float"):
+                    tipo_retorno = "flutuante"
+                elif(elemento1 == "var"):
+                    elemento1 = TabSimb.find_elemento(elemento1.value)
+                    tipo_retorno = elemento.tipo
+
+            if ultima_funcao.valor_retorno == tipo_retorno:
+                print(str(ultima_funcao.valor_retorno))
+            else:
+                print ("Aviso: O tipo de Retorno nao é o mesmo da declaração da função")
+        
     
     def chamada_funcao(self, no, TabSimb):
         if no.type == "chamada_funcao":
             nome = no.value
-            lista_arg = no.child[0].value
+            lista_arg = []
+            for arg in no.child[0].child:
+                no_folha = self.pegar_no_folha(arg)
+                lista_arg.append(str(no_folha))
             funcao = TabSimb.find_funcao(nome)
             if(funcao != None):
                 if (len(funcao.lista_paramentros) > len(lista_arg)):
@@ -323,23 +406,64 @@ class TabelaSimbolos():
             float(s)
             return "<class 'float'>"
     
+    def pegar_no_folha(self, filho):
+        if(len(filho.child) == 3):
+            return filho
+        elif(len(filho.child) == 0):
+            return filho
+        else:
+            return self.pegar_no_folha(filho.child[0])
+
+    
     def atribuicao_elemento(self, var, valor, TabSimb):
-        print(var)
         elemento = self.find_elemento(var)
         if elemento:
-            if(elemento.get_tipo(elemento) == "inteiro" and self.str_to_number(valor) != "<class 'int'>"):
-                print ("Aviso: Atribuição de tipos distintos '" + str(elemento.nome) + "' " + str(elemento.tipo) + " e '" + str(valor) + "' flutuante") 
-                elemento.set_uso(elemento, True)
-                elemento.set_valor(elemento, valor, TabSimb)
-            elif(elemento.get_tipo(elemento) == "flutuante" and self.str_to_number(valor) != "<class 'float'>"):
-                print ("Aviso: Atribuição de tipos distintos '" + str(elemento.nome) + "' " + str(elemento.tipo) + " e '" + str(valor) + "' inteiro") 
-                elemento.set_uso(elemento, True)
-                elemento.set_valor(elemento, valor, TabSimb)
-            else:
-                elemento.set_uso(elemento, True)
-                elemento.set_valor(elemento, valor, TabSimb)
+            if(elemento.get_tipo(elemento) == "inteiro"):
+                if(str(valor) == "numero_int"):
+                    elemento.set_valor(elemento, int(float(valor.value)), TabSimb)
+                    elemento.set_uso(elemento,True)
+                elif(str(valor) == "numero_float"):
+                    print ("Aviso: Atribuição de tipos distintos '" + str(elemento.nome) + "' " + str(elemento.tipo) + " e '" + str(valor.value) + "' flutuante") 
+                    elemento.set_valor(elemento, int(float(valor.value)), TabSimb)
+                    elemento.set_uso(elemento,True)
+                elif(str(valor) == "var"):
+                    elemento1 = TabSimb.find_elemento(valor.value)
+                    if str(elemento1.valor) != "null":
+                        if str(elemento1.tipo) == "inteiro":
+                            elemento.set_valor(elemento, int(float(elemento1.valor)), TabSimb)
+                            elemento.set_uso(elemento,True)
+                        elif str(elemento1.tipo) == "flutuante":
+                            print ("Aviso: Atribuição de tipos distintos '" + str(elemento.nome) + "' " + str(elemento.tipo) + " e '" + str(elemento1.nome) + "' flutuante") 
+                            elemento.set_valor(elemento, int(float(elemento1.valor)), TabSimb)
+                            elemento.set_uso(elemento,True)
+                    else:
+                        print ("Erro: A variavel '" + elemento1.nome + "' que deseja atribuir não possui nenhum valor")
+                        exit(1)
+
+            elif(elemento.get_tipo(elemento) == "flutuante"):
+                if(str(valor) == "numero_float"):
+                    elemento.set_valor(elemento, float(valor.value), TabSimb)
+                    elemento.set_uso(elemento,True)
+                elif(str(valor) == "numero_int"):
+                    print ("Aviso: Atribuição de tipos distintos '" + str(elemento.nome) + "' " + str(elemento.tipo) + " e '" + str(valor.value) + "' inteiro") 
+                    elemento.set_valor(elemento, float(int(valor.value)), TabSimb)
+                    elemento.set_uso(elemento,True)
+                elif(str(valor) == "var"):
+                    elemento1 = TabSimb.find_elemento(valor.value)
+                    if str(elemento1.valor) != "null":
+                        if str(elemento1.tipo) == "flutuante":
+                            elemento.set_valor(elemento, float(elemento1.valor), TabSimb)
+                            elemento.set_uso(elemento,True)
+                        elif str(elemento1.tipo) == "inteiro":
+                            print ("Aviso: Atribuição de tipos distintos '" + str(elemento.nome) + "' " + str(elemento.tipo) + " e '" + str(elemento1.nome) + "' inteiro") 
+                            elemento.set_valor(elemento, float(int(elemento1.valor)), TabSimb)
+                            elemento.set_uso(elemento,True)
+                    else:
+                        print ("Erro: A variavel '" + elemento1.nome + "' que deseja atribuir não possui nenhum valor")
+                        exit(1)
         else:
             print ("error: A variavel que deseja atribuir nao foi declarada em nenhum escopo, nem global nem local")
+            exit(1)
 
     def set_sinal(self, elemento, op_unitario):
         if(elemento.valor == 'null'):
@@ -395,11 +519,7 @@ class Elemento():
             exit(1)
 
     def set_valor(self, elemento, valor, TabSimb):
-        if(valor.isdigit() == False):
-            var = TabSimb.find_elemento(valor)
-            elemento.valor = var.valor
-        else:
-            elemento.valor = valor
+        elemento.valor = valor
             
 
     def get_tipo(self, elemento):
@@ -407,6 +527,7 @@ class Elemento():
 
     def set_tipo(self, elemento, tipo):
         elemento.tipo = tipo
+
 
 
 if __name__ == '__main__':

@@ -3,17 +3,16 @@
 {Aviso: Atribuição de tipos distintos 'a' flutuante e 'func' retorna inteiro}
 {Erro: Função principal deveria retornar inteiro, mas retorna vazio}
 
-inteiro: x
-inteiro: a
-
-inteiro func()
-	retorna (x)
+inteiro func(inteiro: x, inteiro: y)
+	retorna (x + y)
 fim
 
 inteiro principal()
-	a := 10
-	x:=15
-	x:=a
-	
-retorna(a)
+	flutuante: a
+	flutuante: c
+	inteiro: b
+
+	b := c
+
+	a := func(10,5)
 fim

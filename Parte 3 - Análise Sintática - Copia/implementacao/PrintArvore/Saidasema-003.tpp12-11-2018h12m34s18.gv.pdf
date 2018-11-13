@@ -1,0 +1,44 @@
+// TREE
+digraph {
+	programa0 [label=programa]
+	lista_declaracoes001 [label=lista_declaracoes]
+	programa0 -> lista_declaracoes001
+	declaracao00101 [label=declaracao]
+	lista_declaracoes001 -> declaracao00101
+	declaracao_funcao0010101 [label=declaracao_funcao]
+	declaracao00101 -> declaracao_funcao0010101
+	tipo001010101 [label=tipo]
+	declaracao_funcao0010101 -> tipo001010101
+	cabecalho0010101011 [label=cabecalho]
+	declaracao_funcao0010101 -> cabecalho0010101011
+	lista_parametros001010101101 [label=lista_parametros]
+	cabecalho0010101011 -> lista_parametros001010101101
+	vazio00101010110101 [label=vazio]
+	lista_parametros001010101101 -> vazio00101010110101
+	corpo0010101011011 [label=corpo]
+	cabecalho0010101011 -> corpo0010101011011
+	corpo001010101101101 [label=corpo]
+	corpo0010101011011 -> corpo001010101101101
+	vazio00101010110110101 [label=vazio]
+	corpo001010101101101 -> vazio00101010110110101
+	acao0010101011011011 [label=acao]
+	corpo0010101011011 -> acao0010101011011011
+	retorna001010101101101101 [label=retorna]
+	acao0010101011011011 -> retorna001010101101101101
+	expressao00101010110110110101 [label=expressao]
+	retorna001010101101101101 -> expressao00101010110110110101
+	expressao_logica0010101011011011010101 [label=expressao_logica]
+	expressao00101010110110110101 -> expressao_logica0010101011011011010101
+	expressao_simples001010101101101101010101 [label=expressao_simples]
+	expressao_logica0010101011011011010101 -> expressao_simples001010101101101101010101
+	expressao_aditiva00101010110110110101010101 [label=expressao_aditiva]
+	expressao_simples001010101101101101010101 -> expressao_aditiva00101010110110110101010101
+	expressao_multiplicativa0010101011011011010101010101 [label=expressao_multiplicativa]
+	expressao_aditiva00101010110110110101010101 -> expressao_multiplicativa0010101011011011010101010101
+	expressao_unaria001010101101101101010101010101 [label=expressao_unaria]
+	expressao_multiplicativa0010101011011011010101010101 -> expressao_unaria001010101101101101010101010101
+	fator00101010110110110101010101010101 [label=fator]
+	expressao_unaria001010101101101101010101010101 -> fator00101010110110110101010101010101
+	numero_float0010101011011011010101010101010101 [label=numero_float]
+	fator00101010110110110101010101010101 -> numero_float0010101011011011010101010101010101
+}

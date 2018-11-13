@@ -101,7 +101,7 @@ class Syn:
 
     def p_cabecalho(self, p):
         '''cabecalho : ID ABRE_PAREN lista_parametros FECHA_PAREN corpo FIM'''
-        p[0] = Tree('cabecalho', [p[3], p[5]], p[1]) ## TIREI O ID DO VALUE
+        p[0] = Tree('cabecalho', [p[3], p[5], Tree(type_node=p[6])], p[1]) ## TIREI O ID DO VALUE
 
     def p_lista_parametros(self, p):
         '''lista_parametros : lista_parametros VIRGULA parametro
@@ -142,13 +142,13 @@ class Syn:
         '''se : SE expressao ENTAO corpo FIM
               | SE expressao ENTAO corpo SENAO corpo FIM'''
         if len(p) == 6:
-            p[0] = Tree('se', [p[2], p[4]])
+            p[0] = Tree('se', [p[2], p[4], Tree(type_node=p[5])])
         else:
-            p[0] = Tree('se', [p[2], p[4], p[6]])
+            p[0] = Tree('se', [p[2], p[4], p[6], Tree(type_node=p[7])])
 
     def p_repita(self, p):
         '''repita : REPITA corpo ATE expressao'''
-        p[0] = Tree('repita', [p[2], p[4]])
+        p[0] = Tree('repita', [p[2], p[4], Tree(type_node=p[3])])
 
     def p_atribuicao(self, p):
         '''atribuicao : var ATRIBUICAO expressao'''
