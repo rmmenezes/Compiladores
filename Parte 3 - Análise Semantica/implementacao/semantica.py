@@ -50,16 +50,28 @@ class Verifica_Arvore():
         return lista_values
 
     def atribuicao(self, filho, TabSimb):
-        variavel = filho.child[0].value
-        find_e = TabSimb.find_elemento(variavel)
+        variavel = filho.child[0]
+        index = None
+        if len(variavel.child) > 0:
+            index = variavel.child[0].child[0].value
+        find_e = TabSimb.find_elemento(variavel.value)
         if find_e == None:
-            print("Erro: A variavel '" + variavel + "' que deseja atribuir, ainda não foi declarada")
+            print("Erro: A variavel '" + variavel.value + "' que deseja atribuir, ainda não foi declarada")
         else:
-            expressao = self.resolve_expressao(filho.child[1], TabSimb)
-            tipo = expressao[0]
-            valor = expressao[1]
-            find_e.valor = valor
-            find_e.used = True
+            if index != None and find_e.indice < index:
+                print("Erro: O vetor '" + variavel.value + "' que deseja atribuir, esta fora do range declarado")
+            elif index != None:
+                expressao = self.resolve_expressao(filho.child[1], TabSimb)
+                tipo = expressao[0]
+                valor = expressao[1]
+                find_e.valor[index] = valor
+                find_e.used = True
+            else:
+                expressao = self.resolve_expressao(filho.child[1], TabSimb)
+                tipo = expressao[0]
+                valor = expressao[1]
+                find_e.valor = valor
+                find_e.used = True
 
         
     
@@ -166,6 +178,11 @@ class Verifica_Arvore():
         for variavel in lista_variaveis:
             if(TabSimb.find_elemento(variavel) != None):
                 print("Aviso: Variável '" + variavel + "' já declarada anteriormente")
+            elif index != None:
+                v = []
+                for i in range(index):
+                    v.append('null')
+                TabSimb.inserir_elemento(variavel, tipo, v, index, False)                
             else:
                 TabSimb.inserir_elemento(variavel, tipo, "null", index, False)
 
@@ -176,7 +193,7 @@ class Verifica_Arvore():
         index_tipo = resultado[2]
         tipo = filho.child[0].value
         if index_tipo != "numero_int" and index_valor != None:
-            print("Erro: índice de array '" + str(index_valor) + "' não inteiro")
+            print("Erro: índice de array " + str(lista_variaveis) + " não é um inteiro")
         else:
             self.declara_variaveis_na_tabela_de_simbolos(lista_variaveis, tipo, index_valor, TabSimb)
 
@@ -217,11 +234,11 @@ class TabelaSimbolos():
         print("### TABELA DE SIMBOLOS ###")
         for e in self.lista_elementos:
             if(e.indice):
-                print("Tipo: " + e.tipo + " Nome: " + e.nome + " Indice: " + e.indice +
-                      " Valor: " + str(e.valor) + " Escopo: " + e.escopo + " Usada: " + str(e.used))
+                print("Tipo: " + str(e.tipo) + " Nome: " + str(e.nome) + " Indice: " + str(e.indice) +
+                      " Valor: " + str(e.valor) + " Escopo: " + str(e.escopo) + " Usada: " + str(e.used))
             else:
-                print("Tipo: " + e.tipo + " Nome: " + e.nome + " Valor: " +
-                      str(e.valor) + " Escopo: " + e.escopo + " Usada: " + str(e.used))
+                print("Tipo: " + str(e.tipo) + " Nome: " + str(e.nome) + " Valor: " +
+                      str(e.valor) + " Escopo: " + str(e.escopo) + " Usada: " + str(e.used))
 
     def find_elemento(self, var):
         for escopo in pilhaEscopos:

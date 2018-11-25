@@ -3,8 +3,11 @@
 {Aviso: Variável 'b' declarada e não utilizada}
 {Erro: Função principal deveria retornar inteiro, mas retorna vazio}
 
+inteiro: a
+flutuante: b
+inteiro: c[5]
+
 inteiro principal()
-  inteiro: a, b
-  a := 50
-  b := 20 + a
+  c[3] := 10
+    
 fim
