@@ -22,7 +22,8 @@ class Verifica_Arvore():
                     self.atribuicao(filho, TabSimb)
                 elif filho.type == "chamada_funcao":
                     self.chamada_funcao(filho, TabSimb)
-                # elif filho.type == "fim":
+                elif filho.type == "fim":
+                    self.fim(filho, TabSimb)
                 # elif filho.type == "até":
                 if not isinstance(filho, Tree):
                     return
@@ -49,6 +50,9 @@ class Verifica_Arvore():
             if i.value != 'vazio':
                 lista_values.append(i.value)
         return lista_values
+
+    def fim(self, filho, TabSimb):
+        pilhaEscopos.pop()
 
     def chamada_funcao(self, filho, TabSimb):
         nome = filho.value
@@ -193,7 +197,7 @@ class Verifica_Arvore():
             else:
                 result = self.devolve_valor_final_expressao(filho_esquerda, operador, filho_direita, TabSimb)
                 if tipo_esquerda != funcao_escopo.tipo_retorno:
-                    print ("Aviso: A funcão '" + funcao_escopo.nome + "' deveria retornar '" + funcao_escopo.tipo_retorno + "' mas retorna '" + tipo_esquerda + "' houve um ajuste do valor para o tipo correto")
+                    print ("Aviso: A funcão '" + str(funcao_escopo.nome) + "' deveria retornar '" + str(funcao_escopo.tipo_retorno) + "' mas retorna '" + str(tipo_esquerda) + "' houve um ajuste do valor para o tipo correto")
                     novo_result = self.muda_o_tipo(funcao_escopo.tipo_retorno, result)
                     return funcao_escopo.tipo_retorno, novo_result
                 else:
@@ -214,7 +218,6 @@ class Verifica_Arvore():
                 funcao.valor_retorno = resultado
                 pilhaEscopos.pop()
             elif funcao.tipo_retorno == tipo:
-                print("resultado")
                 funcao.foi_retornada = True
                 funcao.valor_retorno = resultado
                 pilhaEscopos.pop()
@@ -224,13 +227,13 @@ class Verifica_Arvore():
             print("Erro: O progama esta retornado algo fora de um escopo valido")
 
     def declaracao_funcao(self, filho, TabSimb):
-        lista_paramentros = self.get_value_no_folhas(filho.child[1].child[0])
-        #for param in filho.child[1].child[0].child:
-        #    for i in param.child:
-        #        print(i.type)
-        #print(lista_paramentros)
         tipo = filho.child[0].value
         nome = filho.child[1].value
+        lista_paramentros = []
+        for param in filho.child[1].child[0].child:
+            for tipo in param.child:
+                TabSimb.inserir_elemento(param.value, tipo.value, "null", None, True, nome)
+                lista_paramentros.append(param.value)
         self.declara_funcao_na_tabela_de_simbolos(nome, lista_paramentros, tipo, TabSimb)
         if nome == "principal":
             TabSimb.TemPrincipal = True
@@ -250,9 +253,9 @@ class Verifica_Arvore():
                 v = []
                 for i in range(index):
                     v.append('null')
-                TabSimb.inserir_elemento(variavel, tipo, v, index, False)
+                TabSimb.inserir_elemento(variavel, tipo, v, index, False, pilhaEscopos[-1])
             else:
-                TabSimb.inserir_elemento(variavel, tipo, "null", index, False)
+                TabSimb.inserir_elemento(variavel, tipo, "null", index, False, pilhaEscopos[-1])
 
     def declaracao_variaveis(self, filho, TabSimb):
         resultado = self.get_value_no_folhas_para_variaveis(filho.child[1])
@@ -287,8 +290,8 @@ class TabelaSimbolos():
     def pega_lista_funcoes(self):
         return self.lista_funcoes
 
-    def inserir_elemento(self, nome, tipo, valor, indice, used):
-        self.lista_elementos.append(Elemento(nome, pilhaEscopos[-1], tipo, valor, indice, used))
+    def inserir_elemento(self, nome, tipo, valor, indice, used, Escopo):
+        self.lista_elementos.append(Elemento(nome, Escopo, tipo, valor, indice, used))
 
     def inserir_funcao(self, nome, tipo_retorno, valor_retorno, foi_retornada, lista_paramentros):
         self.lista_funcoes.append(ListaFuncoes(nome, tipo_retorno, valor_retorno, lista_paramentros, foi_retornada, pilhaEscopos[-1]))
@@ -331,12 +334,12 @@ class TabelaSimbolos():
         if self.lista_elementos:
             for elemento in self.lista_elementos:
                 if elemento.used == False:
-                    print ("Aviso: Variável '" + elemento.nome +"' declarada e não utilizada")
+                    print ("Aviso: Variável '" + str(elemento.nome) +"' declarada e não utilizada")
 
     def conferir_funcoes_declaradas(self):
         for f in self.lista_funcoes:
             if(f.foi_retornada == False):
-                print("Erro: Função " + f.nome + " deveria retornar " + f.tipo_retorno + ", mas retorna vazio")
+                print("Erro: Função " + str(f.nome) + " deveria retornar " + str(f.tipo_retorno) + ", mas retorna vazio")
 
 class Elemento():
     def __init__(self, nome, escopo, tipo, valor, indice, used):

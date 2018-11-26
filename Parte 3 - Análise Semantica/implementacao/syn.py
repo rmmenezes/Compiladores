@@ -89,7 +89,7 @@ class Syn:
     def p_tipo(self, p):
         '''tipo : INTEIRO
                 | FLUTUANTE'''
-        p[0] = Tree('tipo', [], str(p[1]))
+        p[0] = Tree('tipo', [], p[1])
 
     def p_declaracao_funcao(self, p):
         '''declaracao_funcao : tipo cabecalho
@@ -115,7 +115,7 @@ class Syn:
     def p_parametro(self, p):
         '''parametro : tipo DOIS_PONTOS ID
                      |  parametro ABRE_COUCH FECHA_COUCH'''
-        if p[2] == 'DOIS_PONTOS':
+        if p[2] == ':':
             p[0] = Tree('parametro', [p[1]], p[3])
         else:
             p[0] = Tree('parametro', [p[1]])

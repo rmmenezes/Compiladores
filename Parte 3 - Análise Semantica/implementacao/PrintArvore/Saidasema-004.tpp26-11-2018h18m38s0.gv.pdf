@@ -1,0 +1,44 @@
+// TREE
+digraph {
+	programa0 [label=programa]
+	lista_declaracoes001 [label=lista_declaracoes]
+	programa0 -> lista_declaracoes001
+	declaracao_variaveis00101 [label=declaracao_variaveis]
+	lista_declaracoes001 -> declaracao_variaveis00101
+	tipo0010101 [label=tipo]
+	declaracao_variaveis00101 -> tipo0010101
+	lista_variaveis00101011 [label=lista_variaveis]
+	declaracao_variaveis00101 -> lista_variaveis00101011
+	var0010101101 [label=var]
+	lista_variaveis00101011 -> var0010101101
+	declaracao_variaveis001011 [label=declaracao_variaveis]
+	lista_declaracoes001 -> declaracao_variaveis001011
+	tipo00101101 [label=tipo]
+	declaracao_variaveis001011 -> tipo00101101
+	lista_variaveis001011011 [label=lista_variaveis]
+	declaracao_variaveis001011 -> lista_variaveis001011011
+	var00101101101 [label=var]
+	lista_variaveis001011011 -> var00101101101
+	declaracao_funcao0010111 [label=declaracao_funcao]
+	lista_declaracoes001 -> declaracao_funcao0010111
+	tipo001011101 [label=tipo]
+	declaracao_funcao0010111 -> tipo001011101
+	cabecalho0010111011 [label=cabecalho]
+	declaracao_funcao0010111 -> cabecalho0010111011
+	lista_parametros001011101101 [label=lista_parametros]
+	cabecalho0010111011 -> lista_parametros001011101101
+	vazio00101110110101 [label=vazio]
+	lista_parametros001011101101 -> vazio00101110110101
+	corpo0010111011011 [label=corpo]
+	cabecalho0010111011 -> corpo0010111011011
+	atribuicao001011101101101 [label=atribuicao]
+	corpo0010111011011 -> atribuicao001011101101101
+	var00101110110110101 [label=var]
+	atribuicao001011101101101 -> var00101110110110101
+	expressao001011101101101011 [label=expressao]
+	atribuicao001011101101101 -> expressao001011101101101011
+	numero_int00101110110110101101 [label=numero_int]
+	expressao001011101101101011 -> numero_int00101110110110101101
+	fim00101110110111 [label=fim]
+	cabecalho0010111011 -> fim00101110110111
+}
