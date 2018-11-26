@@ -1,5 +1,5 @@
 inteiro principal()
     inteiro: x
-    flutuante: y
+    flutuante: y,d
     retorna(x)
 fim

@@ -20,7 +20,8 @@ class Verifica_Arvore():
                     self.retorna(filho, TabSimb)
                 elif filho.type == "atribuicao":
                     self.atribuicao(filho, TabSimb)
-                # elif filho.type == "chamada_funcao":
+                elif filho.type == "chamada_funcao":
+                    self.chamada_funcao(filho, TabSimb)
                 # elif filho.type == "fim":
                 # elif filho.type == "até":
                 if not isinstance(filho, Tree):
@@ -49,6 +50,21 @@ class Verifica_Arvore():
                 lista_values.append(i.value)
         return lista_values
 
+    def chamada_funcao(self, filho, TabSimb):
+        nome = filho.value
+        lista_arg = []
+        for arg in filho.child[0].child:
+            no_folha = self.get_value_no_folhas(arg)
+            lista_arg.append(no_folha)
+        funcao = TabSimb.find_funcao(nome)
+        if(funcao != None):
+            if (len(funcao.lista_paramentros) > len(lista_arg)):
+                print("Erro: Chamada à função '" + nome + "' com número de parâmetros menor que o declarado")
+            elif (len(funcao.lista_paramentros) < len(lista_arg)):
+                print("Erro: Chamada à função '" + nome + "' com número de parâmetros maior que o declarado")
+        else:
+            print("Erro: Chamada da função '" + nome + "' que não foi declarada")
+
     def atribuicao(self, filho, TabSimb):
         variavel = filho.child[0]
         index = None
@@ -66,26 +82,37 @@ class Verifica_Arvore():
                 valor = expressao[1]
                 find_e.valor[index] = valor
                 find_e.used = True
+                if tipo == find_e.tipo:
+                    find_e.valor = valor
+                else:
+                    print("Aviso: A variavel '" + find_e.nome + "' tem tipo '" + find_e.tipo + "' mas esta recebendo um valor de tipo '"+ tipo +"' hove a alterção deste tipo para o tipo da variavel a ser atribuida")
+                    novo_valor = self.muda_o_tipo(find_e.tipo, valor)
+                    find_e.valor = novo_valor
             else:
                 expressao = self.resolve_expressao(filho.child[1], TabSimb)
                 tipo = expressao[0]
                 valor = expressao[1]
-                find_e.valor = valor
                 find_e.used = True
+                if tipo == find_e.tipo:
+                    find_e.valor = valor
+                else:
+                    print("Aviso: A variavel '" + find_e.nome + "' tem tipo '" + find_e.tipo + "' mas esta recebendo um valor de tipo '"+ tipo +"' hove a alterção deste tipo para o tipo da variavel a ser atribuida")
+                    novo_valor = self.muda_o_tipo(find_e.tipo, valor)
+                    find_e.valor = novo_valor
 
-        
-    
+
     def retorna_o_tipo_do_no_passado(self, no, TabSimb):
-        if (str(type(no.value)) == "<class 'str'>"):
+        if str(type(no.value)) == "<class 'str'>":
             elemento = TabSimb.find_elemento(no.value)
-            return elemento.tipo
-        else:
-            try:
-                int(no.value)
-                return "inteiro"
-            except ValueError:
-                float(no.value)
-                return "flutuante"
+            if elemento != None:
+                return elemento.tipo
+            else:
+                print("Erro: A variavel '"+ no.value +"' nao está declarada")
+                exit(1)
+        elif str(type(no.value)) == "<class 'float'>":
+            return "flutuante"
+        elif str(type(no.value)) == "<class 'int'>":
+            return "inteiro"
 
     def devolve_valor_final_expressao(self, filho_esquerda, operador, filho_direita, TabSimb):
         num_esquerdo = filho_esquerda.value
@@ -113,7 +140,7 @@ class Verifica_Arvore():
                 else:
                     find_e.used = True
                     num_esquerdo = find_e.valor
-        
+
         if operador.type == "operador_soma":
             if operador.value == "+":
                 return num_esquerdo + num_direito
@@ -121,39 +148,75 @@ class Verifica_Arvore():
                 return num_esquerdo - num_direito
         elif operador.type == "operador_multiplicacao":
             if operador.value == "*":
-                return num_esquerdo * num_direito            
+                return num_esquerdo * num_direito
             else:
                 return num_esquerdo / num_direito
         else:
             return "expressao ainda nao foi declarada"
 
+    def muda_o_tipo(self, tipo_cetro, valor):
+        if tipo_cetro == "inteiro":
+            return int(float(valor))
+        if tipo_cetro == "flutuante":
+            return float(int(valor))
+
     def resolve_expressao(self, filho, TabSimb):
         if len(filho.child) == 1:
-            tipo_meio = self.retorna_o_tipo_do_no_passado(filho.child[0], TabSimb)
+            funcao_escopo = TabSimb.find_funcao(pilhaEscopos[-1])
             result = filho.child[0].value
-            return tipo_meio, result
+            if filho.child[0].type == "var":
+                variavel = TabSimb.find_elemento(filho.child[0].value)
+                if variavel != None and variavel.valor != "null":
+                    tipo_meio = self.retorna_o_tipo_do_no_passado(filho.child[0], TabSimb)
+                    return tipo_meio, variavel.valor
+                elif variavel != None and variavel.valor == "null":
+                    print("Erro: A variavel '" + variavel.nome + "' possui valor nulo")
+                    exit(1)
+                else:
+                    print("Erro: A variavel '" + filho.child[0].value + "' ainda não foi declarada")
+                    exit(1)
+            else:
+                tipo_meio = self.retorna_o_tipo_do_no_passado(filho.child[0], TabSimb)
+                return tipo_meio, result
+
         if len(filho.child) > 1:
+            funcao_escopo = TabSimb.find_funcao(pilhaEscopos[-1])
             filho_esquerda = filho.child[0]
             operador = filho.child[1]
             filho_direita = filho.child[2]
-            tipo_direita = self.retorna_o_tipo_do_no_passado(filho_direita, TabSimb) 
+            tipo_direita = self.retorna_o_tipo_do_no_passado(filho_direita, TabSimb)
             tipo_esquerda = self.retorna_o_tipo_do_no_passado(filho_esquerda, TabSimb)
             if tipo_direita != tipo_esquerda:
-                print("Aviso: A expressão trabalha com tipos diferentes " + tipo_direita + " e " + tipo_esquerda)
-                result = self.devolve_valor_final_expressao(filho_esquerda, operador, filho_direita, TabSimb)
-                print(result)
-                return tipo_direita, result
+                print("Aviso: A expressão trabalha com tipos diferentes " + tipo_direita + " e " + tipo_esquerda + " houve um ajuste do valor para o tipo correto") 
+                novo_result = self.devolve_valor_final_expressao(filho_esquerda, operador, filho_direita, TabSimb)
+                return tipo_direita, novo_result
             else:
                 result = self.devolve_valor_final_expressao(filho_esquerda, operador, filho_direita, TabSimb)
-                print(result)
-                return tipo_direita, result
+                if tipo_esquerda != funcao_escopo.tipo_retorno:
+                    print ("Aviso: A funcão '" + funcao_escopo.nome + "' deveria retornar '" + funcao_escopo.tipo_retorno + "' mas retorna '" + tipo_esquerda + "' houve um ajuste do valor para o tipo correto")
+                    novo_result = self.muda_o_tipo(funcao_escopo.tipo_retorno, result)
+                    return funcao_escopo.tipo_retorno, novo_result
+                else:
+                    return tipo_direita, result
 
-                
+
 
     def retorna(self, filho, TabSimb):
         funcao = TabSimb.find_funcao(pilhaEscopos[-1])
         if funcao != None:
-            if funcao.tipo_retorno == self.resolve_expressao(filho.child[0], TabSimb):
+            expressao = self.resolve_expressao(filho.child[0], TabSimb)
+            tipo = expressao[0]
+            resultado = expressao[1]
+            if tipo != funcao.tipo_retorno:
+                print ("Erro: A funcão '" + funcao.nome + "' deveria retornar '" + funcao.tipo_retorno + "' mas retorna '" + tipo + "' houve um ajuste do valor para o tipo correto")
+                resultado = self.muda_o_tipo(funcao.tipo_retorno, resultado)
+                funcao.foi_retornada = True
+                funcao.valor_retorno = resultado
+                pilhaEscopos.pop()
+            elif funcao.tipo_retorno == tipo:
+                print("resultado")
+                funcao.foi_retornada = True
+                funcao.valor_retorno = resultado
                 pilhaEscopos.pop()
             else:
                 print("Erro: A função esta retornando um tipo diferente do delcarado")
@@ -162,6 +225,10 @@ class Verifica_Arvore():
 
     def declaracao_funcao(self, filho, TabSimb):
         lista_paramentros = self.get_value_no_folhas(filho.child[1].child[0])
+        #for param in filho.child[1].child[0].child:
+        #    for i in param.child:
+        #        print(i.type)
+        #print(lista_paramentros)
         tipo = filho.child[0].value
         nome = filho.child[1].value
         self.declara_funcao_na_tabela_de_simbolos(nome, lista_paramentros, tipo, TabSimb)
@@ -173,6 +240,7 @@ class Verifica_Arvore():
             print("Aviso: Função '" + nome + "' já declarada anteriormente")
         else:
             TabSimb.inserir_funcao(nome, tipo, 'null', False, lista_paramentros)
+            
 
     def declara_variaveis_na_tabela_de_simbolos(self, lista_variaveis, tipo, index, TabSimb):
         for variavel in lista_variaveis:
@@ -182,7 +250,7 @@ class Verifica_Arvore():
                 v = []
                 for i in range(index):
                     v.append('null')
-                TabSimb.inserir_elemento(variavel, tipo, v, index, False)                
+                TabSimb.inserir_elemento(variavel, tipo, v, index, False)
             else:
                 TabSimb.inserir_elemento(variavel, tipo, "null", index, False)
 
@@ -246,7 +314,7 @@ class TabelaSimbolos():
                 if elemento.nome == var and elemento.escopo == escopo:
                     return elemento
         return None
-    
+
     def find_funcao(self, nome):
         for funcao in self.lista_funcoes:
             if funcao.nome == nome:
@@ -265,11 +333,10 @@ class TabelaSimbolos():
                 if elemento.used == False:
                     print ("Aviso: Variável '" + elemento.nome +"' declarada e não utilizada")
 
-    #def conferir_funcoes_declaradas(self):
-    #    if self.lista_funcoes:
-    #        for f in self.lista_funcoes:
-    #            if(f.foi_retornada == False):
-    #                print("Erro: Função " + f.nome + " deveria retornar " + f.tipo_retorno + ", mas retorna vazio")
+    def conferir_funcoes_declaradas(self):
+        for f in self.lista_funcoes:
+            if(f.foi_retornada == False):
+                print("Erro: Função " + f.nome + " deveria retornar " + f.tipo_retorno + ", mas retorna vazio")
 
 class Elemento():
     def __init__(self, nome, escopo, tipo, valor, indice, used):
@@ -306,18 +373,18 @@ if __name__ == '__main__':
     TabSimb = TabelaSimbolos()
     Sintatico.andar(root.ps, TabSimb)
 
-    
+
     if(TabSimb.TemPrincipal == False):      #VERIFICA SE TEM A FUNÇÃO PRINCIPAL
         print ("Erro: Função principal não declarada")
 
-    TabSimb.conferir_variaveis_usadas()     
-    #TabSimb.conferir_funcoes_declaradas()
+    TabSimb.conferir_variaveis_usadas()
+    TabSimb.conferir_funcoes_declaradas()
 
     TabSimb.print_tabela_simbolos()
-    #TabSimb.print_tabela_funcoes()
-    #TabSimb.print_pilha()
+    TabSimb.print_tabela_funcoes()
+    TabSimb.print_pilha()
 
-    
+
 
     print_tree(root.ps, dot)
     # print(dot.source)
