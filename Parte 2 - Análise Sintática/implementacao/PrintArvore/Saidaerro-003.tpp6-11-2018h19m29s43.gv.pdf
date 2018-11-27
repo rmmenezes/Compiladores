@@ -1,0 +1,30 @@
+// TREE
+digraph {
+	programa0 [label=programa]
+	lista_declaracoes001 [label=lista_declaracoes]
+	programa0 -> lista_declaracoes001
+	declaracao00101 [label=declaracao]
+	lista_declaracoes001 -> declaracao00101
+	declaracao_funcao0010101 [label=declaracao_funcao]
+	declaracao00101 -> declaracao_funcao0010101
+	tipo001010101 [label=tipo]
+	declaracao_funcao0010101 -> tipo001010101
+	inteiro00101010101 [label=inteiro]
+	tipo001010101 -> inteiro00101010101
+	cabecalho0010101011 [label=cabecalho]
+	declaracao_funcao0010101 -> cabecalho0010101011
+	"(001010101101" [label="("]
+	cabecalho0010101011 -> "(001010101101"
+	lista_parametros0010101011011 [label=lista_parametros]
+	cabecalho0010101011 -> lista_parametros0010101011011
+	vazio001010101101101 [label=vazio]
+	lista_parametros0010101011011 -> vazio001010101101101
+	")00101010110111" [label=")"]
+	cabecalho0010101011 -> ")00101010110111"
+	corpo001010101101111 [label=corpo]
+	cabecalho0010101011 -> corpo001010101101111
+	vazio00101010110111101 [label=vazio]
+	corpo001010101101111 -> vazio00101010110111101
+	fim0010101011011111 [label=fim]
+	cabecalho0010101011 -> fim0010101011011111
+}

@@ -84,8 +84,8 @@ class Lex:
     t_VIRGULA = r','
 
     #NUMEROS
-    t_INTEIRO = r'\d+'
-    t_FLUTUANTE = r'([0-9]+)(\.[0-9]+)?([e|E][+|-]?[0-9]+)?'
+    t_INTEIRO = r'([0-9]+)'
+    t_FLUTUANTE = r'([0-9]+)(\.[0-9]+)([e|E][+|-]?[0-9]+)?'
 
 
     def t_ID(self, t):
