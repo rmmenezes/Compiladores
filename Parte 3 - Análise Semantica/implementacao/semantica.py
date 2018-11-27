@@ -5,7 +5,7 @@ from datetime import datetime
 from syn import *
 from poda import *
 global pilhaEscopos
-pilhaEscopos = ['global']
+pilhaEscopos = ["global"]
 
 
 class Verifica_Arvore():
@@ -182,7 +182,6 @@ class Verifica_Arvore():
             else:
                 tipo_meio = self.retorna_o_tipo_do_no_passado(filho.child[0], TabSimb)
                 return tipo_meio, result
-
         if len(filho.child) > 1:
             funcao_escopo = TabSimb.find_funcao(pilhaEscopos[-1])
             filho_esquerda = filho.child[0]
@@ -211,7 +210,7 @@ class Verifica_Arvore():
             expressao = self.resolve_expressao(filho.child[0], TabSimb)
             tipo = expressao[0]
             resultado = expressao[1]
-            if tipo != funcao.tipo_retorno:
+            if str(tipo) != str(funcao.tipo_retorno):
                 print ("Erro: A funcão '" + funcao.nome + "' deveria retornar '" + funcao.tipo_retorno + "' mas retorna '" + tipo + "' houve um ajuste do valor para o tipo correto")
                 resultado = self.muda_o_tipo(funcao.tipo_retorno, resultado)
                 funcao.foi_retornada = True
@@ -230,19 +229,20 @@ class Verifica_Arvore():
         tipo = filho.child[0].value
         nome = filho.child[1].value
         lista_paramentros = []
+        self.declara_funcao_na_tabela_de_simbolos(nome, lista_paramentros, tipo, TabSimb)
         for param in filho.child[1].child[0].child:
             for tipo in param.child:
                 TabSimb.inserir_elemento(param.value, tipo.value, "null", None, True, nome)
                 lista_paramentros.append(param.value)
-        self.declara_funcao_na_tabela_de_simbolos(nome, lista_paramentros, tipo, TabSimb)
         if nome == "principal":
             TabSimb.TemPrincipal = True
 
     def declara_funcao_na_tabela_de_simbolos(self, nome, lista_paramentros, tipo, TabSimb):
         if TabSimb.find_funcao(nome) != None:
             print("Aviso: Função '" + nome + "' já declarada anteriormente")
-        else:
-            TabSimb.inserir_funcao(nome, tipo, 'null', False, lista_paramentros)
+        else:    
+            pilhaEscopos.append(nome)
+            TabSimb.inserir_funcao(nome, str(tipo), "null", False, lista_paramentros)
             
 
     def declara_variaveis_na_tabela_de_simbolos(self, lista_variaveis, tipo, index, TabSimb):
@@ -328,7 +328,7 @@ class TabelaSimbolos():
         print("### TABELA DE FUNCOES ###")
         for f in self.lista_funcoes:
             print("Nome: " + f.nome + " Lista_Parametros: " + str(f.lista_paramentros) + " Tipo_Retorno: " +
-                  str(f.tipo_retorno) + " Valor_Retorno: " + str(f.valor_retorno) + " Escopo: " + str(f.escopo))
+                  str(f.tipo_retorno) + " Valor_Retorno: " + str(f.valor_retorno) + " Escopo: " + str(f.escopo) + " Foi_Retornada: " + str(f.foi_retornada))
 
     def conferir_variaveis_usadas(self):
         if self.lista_elementos:

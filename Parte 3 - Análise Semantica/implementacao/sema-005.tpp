@@ -6,5 +6,5 @@ inteiro func(inteiro: x, inteiro: y)
 fim
 
 inteiro principal()
-
+    retorna(1)
 fim

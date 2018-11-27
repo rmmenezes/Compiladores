@@ -9,10 +9,11 @@ from datetime import datetime
 global TIPO_ERRO
 
 class Tree:
-    def __init__(self, type_node='', child=[], value=''):
+    def __init__(self, type_node='', child=[], value='', linha=''):
         self.type = type_node
         self.child = child
         self.value = value
+        self.linha = linha
 
     def __str__(self):
         return self.type
@@ -164,7 +165,7 @@ class Syn:
 
     def p_retorna(self, p):
         '''retorna : RETORNA ABRE_PAREN expressao FECHA_PAREN '''
-        p[0] = Tree('retorna', [p[3]])
+        p[0] = Tree('retorna', [p[3]],'' ,p.lineno(1))
 
     def p_expressao(self, p):
         '''expressao : expressao_logica
@@ -178,7 +179,7 @@ class Syn:
                                | DIFERENTE
                                | MENOR_IGUAL
                                | MAIOR_IGUAL'''
-        p[0] = Tree('operador_relacional', [], str(p[1]))
+        p[0] = Tree('operador_relacional', [], str(p[1]), p.lineno(1))
 
     def p_operador_soma(self, p):
         '''operador_soma : MAIS
