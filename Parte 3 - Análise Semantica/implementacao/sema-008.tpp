@@ -2,8 +2,6 @@
 {Erro: Função principal deveria retornar inteiro, mas retorna vazio}
 
 inteiro principal()
-	flutuante: b
-
+	flutuante: b, a
 	b := a + 1.0
-
 fim

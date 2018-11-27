@@ -2,9 +2,10 @@
 {Erro: Função principal deveria retornar inteiro, mas retorna vazio}
 
 inteiro func(inteiro: x, inteiro: y)
-    retorna(x+y)
+	retorna(x + y)
 fim
 
 inteiro principal()
-    retorna(1)
+	inteiro: a
+	a := func(10)
 fim

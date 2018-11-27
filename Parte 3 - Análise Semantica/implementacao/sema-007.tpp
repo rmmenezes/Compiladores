@@ -7,6 +7,7 @@ flutuante: a
 inteiro principal()
 	flutuante: a
 	flutuante: b
+	a:=10
 
 	b := a + 1.0
 

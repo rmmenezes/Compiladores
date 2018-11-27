@@ -1,0 +1,32 @@
+// TREE
+digraph {
+	programa0 [label=programa]
+	lista_declaracoes001 [label=lista_declaracoes]
+	programa0 -> lista_declaracoes001
+	declaracao_variaveis00101 [label=declaracao_variaveis]
+	lista_declaracoes001 -> declaracao_variaveis00101
+	tipo0010101 [label=tipo]
+	declaracao_variaveis00101 -> tipo0010101
+	lista_variaveis00101011 [label=lista_variaveis]
+	declaracao_variaveis00101 -> lista_variaveis00101011
+	var0010101101 [label=var]
+	lista_variaveis00101011 -> var0010101101
+	declaracao_funcao001011 [label=declaracao_funcao]
+	lista_declaracoes001 -> declaracao_funcao001011
+	tipo00101101 [label=tipo]
+	declaracao_funcao001011 -> tipo00101101
+	cabecalho001011011 [label=cabecalho]
+	declaracao_funcao001011 -> cabecalho001011011
+	lista_parametros00101101101 [label=lista_parametros]
+	cabecalho001011011 -> lista_parametros00101101101
+	vazio0010110110101 [label=vazio]
+	lista_parametros00101101101 -> vazio0010110110101
+	corpo001011011011 [label=corpo]
+	cabecalho001011011 -> corpo001011011011
+	escreva00101101101101 [label=escreva]
+	corpo001011011011 -> escreva00101101101101
+	var0010110110110101 [label=var]
+	escreva00101101101101 -> var0010110110110101
+	fim0010110110111 [label=fim]
+	cabecalho001011011 -> fim0010110110111
+}

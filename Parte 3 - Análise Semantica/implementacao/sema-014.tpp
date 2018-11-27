@@ -3,7 +3,6 @@
 {Aviso: Chamada recursiva para principal}
 {Erro: Função principal deveria retornar inteiro, mas retorna vazio}
 
-
 flutuante: a
 inteiro: b
 

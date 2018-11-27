@@ -1,0 +1,56 @@
+// TREE
+digraph {
+	programa0 [label=programa]
+	lista_declaracoes001 [label=lista_declaracoes]
+	programa0 -> lista_declaracoes001
+	declaracao_funcao00101 [label=declaracao_funcao]
+	lista_declaracoes001 -> declaracao_funcao00101
+	tipo0010101 [label=tipo]
+	declaracao_funcao00101 -> tipo0010101
+	cabecalho00101011 [label=cabecalho]
+	declaracao_funcao00101 -> cabecalho00101011
+	lista_parametros0010101101 [label=lista_parametros]
+	cabecalho00101011 -> lista_parametros0010101101
+	parametro001010110101 [label=parametro]
+	lista_parametros0010101101 -> parametro001010110101
+	tipo00101011010101 [label=tipo]
+	parametro001010110101 -> tipo00101011010101
+	parametro0010101101011 [label=parametro]
+	lista_parametros0010101101 -> parametro0010101101011
+	tipo001010110101101 [label=tipo]
+	parametro0010101101011 -> tipo001010110101101
+	corpo00101011011 [label=corpo]
+	cabecalho00101011 -> corpo00101011011
+	retorna0010101101101 [label=retorna]
+	corpo00101011011 -> retorna0010101101101
+	expressao001010110110101 [label=expressao]
+	retorna0010101101101 -> expressao001010110110101
+	var00101011011010101 [label=var]
+	expressao001010110110101 -> var00101011011010101
+	operador_soma001010110110101011 [label=operador_soma]
+	expressao001010110110101 -> operador_soma001010110110101011
+	var0010101101101010111 [label=var]
+	expressao001010110110101 -> var0010101101101010111
+	fim001010110111 [label=fim]
+	cabecalho00101011 -> fim001010110111
+	declaracao_funcao001011 [label=declaracao_funcao]
+	lista_declaracoes001 -> declaracao_funcao001011
+	tipo00101101 [label=tipo]
+	declaracao_funcao001011 -> tipo00101101
+	cabecalho001011011 [label=cabecalho]
+	declaracao_funcao001011 -> cabecalho001011011
+	lista_parametros00101101101 [label=lista_parametros]
+	cabecalho001011011 -> lista_parametros00101101101
+	vazio0010110110101 [label=vazio]
+	lista_parametros00101101101 -> vazio0010110110101
+	corpo001011011011 [label=corpo]
+	cabecalho001011011 -> corpo001011011011
+	retorna00101101101101 [label=retorna]
+	corpo001011011011 -> retorna00101101101101
+	expressao0010110110110101 [label=expressao]
+	retorna00101101101101 -> expressao0010110110110101
+	numero_int001011011011010101 [label=numero_int]
+	expressao0010110110110101 -> numero_int001011011011010101
+	fim0010110110111 [label=fim]
+	cabecalho001011011 -> fim0010110110111
+}
