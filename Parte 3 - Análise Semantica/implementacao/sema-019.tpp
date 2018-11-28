@@ -2,7 +2,7 @@
 
 inteiro: n
 flutuante: x, y, z
-
+n:=5
 inteiro fatorial(inteiro: n, flutuante: m)
 	{NOTAÇÃO CIENTÍFICA}
 	{WARNING: 'm' ESTÁ RECEBENDO VALORES DE TIPOS DIFERENTES}

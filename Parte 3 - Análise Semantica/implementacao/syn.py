@@ -210,7 +210,7 @@ class Syn:
         
     def p_numero_int(self, p):
         '''numero_int : INTEIRO'''
-        p[0] = Tree('numero_int', [], int(p[1]))
+        p[0] = Tree('numero_int', [], p[1])
     
     def p_numero_float(self, p):
         '''numero_float : FLUTUANTE'''

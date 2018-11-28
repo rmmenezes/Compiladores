@@ -168,6 +168,7 @@ class Verifica_Arvore():
                 print("Erro: A variavel '" + filho_direita.value + "' ainda nao foi declarada")
             elif find_e != None:
                 if find_e.valor == "null" and find_e.ehParametro == False:
+                    print(find_e.escopo)
                     print("Erro: A variavel '" + filho_direita.value + "' não possui nenhum valor atribuido")
                     exit(1)
                 elif find_e.valor == "null" and find_e.ehParametro == True:
@@ -183,6 +184,7 @@ class Verifica_Arvore():
             elif find_e != None:
                 if find_e.valor == "null" and find_e.ehParametro == False:
                     print("Erro: A variavel '" + filho_esquerda.value + "' não possui nenhum valor atribuido")
+                    print(find_e.tipo)
                     exit(1)
                 elif find_e.valor == "null" and find_e.ehParametro == True:
                     find_e.used = True
@@ -192,35 +194,46 @@ class Verifica_Arvore():
 
         if operador.type == "operador_soma":
             if operador.value == "+":
-                if str(type(num_direito)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
+                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
                     return (num_direito + " + " + num_esquerdo)
                 else: 
                     return num_esquerdo + num_direito
             else:
-                if str(type(num_direito)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
+                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
                     return (num_direito + " - " + num_esquerdo)
                 else:
                     return num_esquerdo - num_direito
         elif operador.type == "operador_multiplicacao":
             if operador.value == "*":
-                if str(type(num_direito)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
+                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
                     return (num_direito + " * " + num_esquerdo)
                 else:
                     return num_esquerdo * num_direito
             else:
-                if str(type(num_direito)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
+                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
                     return (num_direito + " / " + num_esquerdo)
                 else:
                     return num_esquerdo / num_direito
         elif operador.type == "operador_relacional" and filho_direita == None:
             if operador.value == "<":
-                if str(type(num_direito)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
-                    return (num_direito + " < " + num_esquerdo)
+                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
+                    return ("?")
                 else:
                     return num_direito > num_esquerdo
             elif operador.value == ">":
-                if str(type(num_direito)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
-                    return (num_direito + " > " + num_esquerdo)
+                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
+                    return ("?")
+                else:
+                    return num_direito < num_esquerdo
+        elif operador.type == "operador_relacional" and filho_direita == None:
+            if operador.value == "<":
+                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
+                    return ("?")
+                else:
+                    return num_direito > num_esquerdo
+            elif operador.value == ">":
+                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
+                    return ("?")
                 else:
                     return num_direito < num_esquerdo
 
