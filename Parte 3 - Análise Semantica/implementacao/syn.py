@@ -56,7 +56,7 @@ class Syn:
 
     def p_declaracao_variaveis(self, p):
         '''declaracao_variaveis : tipo DOIS_PONTOS lista_variaveis'''
-        p[0] = Tree('declaracao_variaveis', [p[1], p[3]], "", p.lineno(1))
+        p[0] = Tree('declaracao_variaveis', [p[1], p[3]])
 
 
     def p_inicializacao_variaveis(self, p):
@@ -161,7 +161,7 @@ class Syn:
 
     def p_escreva(self, p):
         '''escreva : ESCREVA ABRE_PAREN expressao FECHA_PAREN '''
-        p[0] = Tree('escreva', [p[3]],'', p.lineno(1))
+        p[0] = Tree('escreva', [p[3]])
 
     def p_retorna(self, p):
         '''retorna : RETORNA ABRE_PAREN expressao FECHA_PAREN '''
@@ -179,7 +179,7 @@ class Syn:
                                | DIFERENTE
                                | MENOR_IGUAL
                                | MAIOR_IGUAL'''
-        p[0] = Tree('operador_relacional', [], str(p[1]), p.lineno(1))
+        p[0] = Tree('operador_relacional', [], str(p[1]))
 
     def p_operador_soma(self, p):
         '''operador_soma : MAIS

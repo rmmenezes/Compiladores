@@ -6,7 +6,7 @@ flutuante: x, y, z
 inteiro fatorial(inteiro: n, flutuante: m)
 	{NOTAÇÃO CIENTÍFICA}
 	{WARNING: 'm' ESTÁ RECEBENDO VALORES DE TIPOS DIFERENTES}
-	m := 5
+	m := 5.5
 	
 	se n>0 então
 		retorna(n)

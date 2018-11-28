@@ -1,5 +1,10 @@
 inteiro principal()
     inteiro: x
-    flutuante: y,d
-    retorna(x)
+    inteiro: y
+    inteiro: res
+    x:=1
+    y:=2.2
+    res:= x > y
+
+    
 fim
