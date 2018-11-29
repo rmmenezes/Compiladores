@@ -102,7 +102,6 @@ class Verifica_Arvore():
             var = self.ir_para_folha(filho.child[1])
             elemento = TabSimb.find_elemento(var)
             TabSimb.set_sinal(elemento, op_unitario)
-            print(op_unitario + var)
 
     def expressao_multiplicativa(self, filho, TabSimb):
         if filho.type == "expressao_multiplicativa":
@@ -142,7 +141,6 @@ class Verifica_Arvore():
         if filho.type == "expressao_aditiva":
             elemento1 = self.pegar_no_folha(filho.child[0])
             elemento2 = self.pegar_no_folha(filho.child[2])
-            print(elemento1)
             tipo1 = None
             tipo2 = None
             if (str(elemento1) == "numero_int"):

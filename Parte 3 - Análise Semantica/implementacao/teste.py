@@ -6,9 +6,9 @@ def num(s):
 
 
 if __name__ == "__main__":
-    a = "10.85"
-    b = "5"
-    sinal = "+"
-    print(float(sinal))
+     
+    a = "0"
+    b = int(float(a))
+    print (b)
     
     

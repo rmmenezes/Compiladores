@@ -1,19 +1,13 @@
-inteiro: n
-flutuante: x, y, z
-n:=5
+
 inteiro fatorial(inteiro: n, flutuante: m)
-	m := 5.5
-	
-	se 0<6 então
-		retorna(n)
+	n:=5
+	se 0 < 6 então
+		inteiro: a
+		a:=50
+		retorna(1)
 	senão
-		repita 
-			flutuante: p
-		até n = 0
+		
 	fim
-	z := 1.9 {SEM ERRO, FOI INICIALIZADO}
-	z := z+1 {ERRO, ID NAO FOI INICIALIZADO}
-	retorna(m)
 fim
 
 inteiro principal()
