@@ -75,9 +75,9 @@ class Syn:
         '''var : ID
                | ID indice'''
         if len(p) == 2:
-            p[0] = Tree('var', [], p[1])
+            p[0] = Tree('var', [], p[1], p.lineno(1))
         else:
-            p[0] = Tree('var', [p[2]], p[1])
+            p[0] = Tree('var', [p[2]], p[1], p.lineno(1))
 
     def p_indice(self, p):
         '''indice : indice ABRE_COUCH expressao FECHA_COUCH
@@ -210,11 +210,11 @@ class Syn:
         
     def p_numero_int(self, p):
         '''numero_int : INTEIRO'''
-        p[0] = Tree('numero_int', [], p[1])
+        p[0] = Tree('numero_int', [], p[1], p.lineno(1))
     
     def p_numero_float(self, p):
         '''numero_float : FLUTUANTE'''
-        p[0] = Tree('numero_float', [], float(p[1]))
+        p[0] = Tree('numero_float', [], float(p[1]), p.lineno(1))
     
     def p_chamada_funcao(self, p):
         '''chamada_funcao : ID ABRE_PAREN lista_argumentos FECHA_PAREN'''

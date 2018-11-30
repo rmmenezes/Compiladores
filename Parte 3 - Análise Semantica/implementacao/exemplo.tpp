@@ -1,22 +1,16 @@
 
 inteiro fatorial(inteiro: n, flutuante: m)
-	n:=5
 	se 0 < 6 então
 		inteiro: a
 		a:=50
-		retorna(1)
 	senão
-		
+	a:=58
+	
 	fim
+	retorna(2+5)
 fim
 
 inteiro principal()
-    inteiro: x
-    inteiro: y
-    inteiro: res
-    x:=1
-    y:=2.2
-    res:= x > y
-
-    
+	fatorial(10,10.5)
+    retorna(0)
 fim
