@@ -79,30 +79,28 @@ class Verifica_Arvore():
         TabSimb.inserir_funcao(filho.type, None, None, None, None)
 
     def escreva(self, filho, TabSimb):
-        if filho.child[0] == "chamada_funcao":
+        if filho.child[0].type == "chamada_funcao":
             funcao = TabSimb.find_funcao(filho.child[0].value)
             if funcao!=None:
                 funcao.used = True
             else:
                 print("Linha:["+str(filho.linha)+"] Erro: Chamada da função '" + filho.child[0].value + "' que não foi declarada")
-        elif filho.child[0] == "var":
+        elif filho.child[0].type == "var":
             variavel = filho.child[0].value
             find_e = TabSimb.find_elemento(variavel)
             if find_e!=None:
                 find_e.used = True
             else:
                 print("Linha:["+str(filho.linha)+"] Erro: A variavel '"+ filho.child[0].value +"' não está declarada")
-        else:
-            print("Linha:["+str(filho.linha)+"] Erro: Não foi possivel realizar a escrita")
     
     def leia(self, filho, TabSimb):
-        if filho.child[0] == "chamada_funcao":
+        if filho.child[0].type == "chamada_funcao":
             funcao = TabSimb.find_funcao(filho.child[0].value)
             if funcao!=None:
                 funcao.used = True
             else:
                 print("Linha:["+str(filho.linha)+"] Erro: Chamada da função '" + filho.child[0].value + "' que não foi declarada")
-        elif filho.child[0] == "var":
+        elif filho.child[0].type == "var":
             variavel = filho.child[0].value
             find_e = TabSimb.find_elemento(variavel)
             if find_e!=None:
@@ -115,13 +113,15 @@ class Verifica_Arvore():
     def chamada_funcao(self, filho, TabSimb):
         nome = filho.value
         if nome == "principal":
-            print("Erro: Chamada para a função principal não permitida")
-            exit(1)
+            if pilhaEscopos[-1] != "principal":
+                print("Erro: Chamada para a função principal não permitida")
+            else:
+                print("Aviso: Chamada recursiva para principal")
         lista_arg = []
         for arg in filho.child[0].child:
-            no_folha = self.get_value_no_folhas(arg)
-            if len(no_folha) > 0:
-                lista_arg.append(no_folha)
+            if str(arg) != "vazio":
+                lista_arg.append(arg)
+
         funcao = TabSimb.find_funcao(nome)
         if(funcao != None):
             if (len(funcao.lista_paramentros) > len(lista_arg)):
@@ -131,7 +131,8 @@ class Verifica_Arvore():
             else:
                 funcao.used = True
         else:
-            print("Erro: Chamada da função '" + nome + "' que não foi declarada")
+            if nome != "principal":
+                print("Erro: Chamada da função '" + nome + "' que não foi declarada")
 
     def atribuicao(self, filho, TabSimb):
         variavel = filho.child[0]
@@ -143,6 +144,7 @@ class Verifica_Arvore():
             print("Linha:["+str(variavel.linha)+"] Erro: A variavel '" + variavel.value + "' que deseja atribuir, ainda não foi declarada")
         else:
             find_e.used = True
+            find_e.inicializado = True
             if index != None:
                 if index.type == "var":
                     e = TabSimb.find_elemento(index.value)
@@ -171,7 +173,7 @@ class Verifica_Arvore():
                     tipo = expressao
                     find_e.used = True
                     if find_e.tipo != tipo:
-                        print("Linha:["+str(filho.linha)+"] Aviso: A variavel '" + find_e.nome + "' tem tipo '" + find_e.tipo + "' mas esta recebendo um valor de tipo '"+ tipo +"' hove a alterção deste tipo para o tipo da variavel a ser atribuida")
+                        print("Linha:["+str(filho.linha)+"] Aviso: A variavel '" + str(find_e.nome) + "' tem tipo '" + str(find_e.tipo) + "' mas esta recebendo um valor de tipo '"+ str(tipo) +"' hove a alterção deste tipo para o tipo da variavel a ser atribuida")
 
     def str_or_int(self, s):
         try:
@@ -203,8 +205,12 @@ class Verifica_Arvore():
             funcao_escopo = TabSimb.find_funcao(funcao)
             if filho.child[0].type == "var":
                 variavel = TabSimb.find_elemento(filho.child[0].value)
-                variavel.used = True
-                if variavel != None or variavel.ehParametro ==True:
+                if variavel != None and variavel.ehParametro ==True:
+                    variavel.used = True
+                    tipo_meio = self.retorna_o_tipo_do_no_passado(filho.child[0], TabSimb)
+                    return tipo_meio
+                elif variavel != None and variavel.ehParametro ==False:
+                    variavel.used = True
                     tipo_meio = self.retorna_o_tipo_do_no_passado(filho.child[0], TabSimb)
                     return tipo_meio
                 else:
@@ -224,7 +230,6 @@ class Verifica_Arvore():
                 return tipo_direita
             else:
                 if tipo_esquerda != funcao_escopo.tipo_retorno and funcao_escopo.tipo_retorno != None:
-                    print ("Linha:["+str(operador.linha)+"] Aviso: A funcão '" + str(funcao_escopo.nome) + "' deveria retornar '" + str(funcao_escopo.tipo_retorno) + "' mas retorna '" + str(tipo_esquerda) + "' houve uma coerção implícita")
                     return funcao_escopo.tipo_retorno
                 else:
                     return tipo_direita
@@ -239,14 +244,13 @@ class Verifica_Arvore():
 
         if funcao != None:
             expressao = self.resolve_expressao(filho.child[0], TabSimb, funcao.nome)
-            tipo = expressao[0]
-            resultado = expressao[1]
-
+            tipo = expressao
             if str(tipo) != str(funcao.tipo_retorno):
                 if(funcao.tipo_retorno == "vazio"):
                     print("Linha:["+str(filho.linha)+"] Erro: Função '"+str(funcao.nome)+"' do tipo vazio retornando '"+ str(tipo) +"'")
                 else:
-                    print ("Linha:["+str(filho.linha)+"] Erro: A funcão '" + str(funcao.nome) + "' deveria retornar '" + str(funcao.tipo_retorno) + "' mas retorna '" + str(tipo) + "'")
+                    print("Erro: Função '"+str(funcao.nome)+"' do tipo '"+str(funcao.tipo_retorno)+"' retornando '"+str(tipo)+"'")
+                    funcao.foi_retornada = True
             elif funcao.tipo_retorno == tipo:
                 funcao.foi_retornada = True
             else:
@@ -336,7 +340,7 @@ class TabelaSimbolos():
         return self.lista_funcoes
 
     def inserir_elemento(self, nome, tipo, indice, used, Escopo, ehParametro, linha=None):
-        self.lista_elementos.append(Elemento(nome, Escopo, tipo, indice, used, ehParametro, linha))
+        self.lista_elementos.append(Elemento(nome, Escopo, tipo, indice, used, ehParametro, linha, False))
 
     def inserir_funcao(self, nome, tipo_retorno, foi_retornada, lista_paramentros, used, linha=None):
         escopo_pai = pilhaEscopos[-1]
@@ -359,7 +363,7 @@ class TabelaSimbolos():
     def find_elemento(self, var):
         for escopo in pilhaEscopos:
             for elemento in self.lista_elementos:
-                if elemento.nome == var and elemento.escopo == escopo:
+                if elemento.nome == str(var) and elemento.escopo == escopo:
                     return elemento
         return None
 
@@ -382,18 +386,20 @@ class TabelaSimbolos():
             for elemento in self.lista_elementos:
                 if elemento.used == False:
                     print ("Linha:["+str(elemento.linha)+"] Aviso: Variável '" + str(elemento.nome) +"' declarada e não utilizada")
-
+                elif elemento.used == True and elemento.inicializado == False:
+                    print ("Linha:["+str(elemento.linha)+"] Aviso: Variável '" + str(elemento.nome) +"' não inicializada")
+                    
     def conferir_funcoes_declaradas(self):
         for f in self.lista_funcoes:
             if(f.foi_retornada == False):
-                if f.tipo_retorno != "vazio":
+                if f.tipo_retorno != "vazio" and f.foi_retornada==False:
                     print("Erro: Função '" + str(f.nome) + "' deveria retornar '" + str(f.tipo_retorno) + "', mas retorna vazio")
             if(f.used == False and f.nome != "principal"):
                 print("Aviso: Função '"+str(f.nome)+"' declarada, mas não utilizada")
             
 
 class Elemento():
-    def __init__(self, nome, escopo, tipo, indice, used, ehParametro, linha=None):
+    def __init__(self, nome, escopo, tipo, indice, used, ehParametro, linha=None, inicializado=None):
         self.nome = nome
         self.escopo = escopo
         self.tipo = tipo
@@ -401,6 +407,7 @@ class Elemento():
         self.indice = indice
         self.ehParametro = ehParametro
         self.linha = linha
+        self.inicializado = inicializado
         
 
     def set_uso(self, elemento, usado):

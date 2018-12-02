@@ -5,6 +5,7 @@
 
 flutuante: a
 inteiro: b
+
 inteiro func()
   a := 10
   principal()

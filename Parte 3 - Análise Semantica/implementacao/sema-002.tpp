@@ -5,20 +5,9 @@
 
 inteiro: a
 flutuante: b
-b:=10
-
-bubble_sort(inteiro: x)
-  repita
-    repita
-      se 1 > 10 então
-        inteiro: temp
-        temp := 155
-        escreva(a)
-      fim
-    até b < 1
-  até 5 > 5
-  retorna(x)
-fim
+inteiro: c[1.2]
 
 inteiro principal()
+  c[5.8] := 10
+    
 fim

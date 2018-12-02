@@ -4,6 +4,7 @@
 {Aviso: Chamada recursiva para a função 'principal'}
 {Erro: Função 'principal' deveria retornar inteiro, mas retorna vazio}
 
+
 flutuante: a
 inteiro: b
 

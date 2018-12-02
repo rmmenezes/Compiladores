@@ -1,6 +1,7 @@
 {Erro: Função 'func' do tipo inteiro retornando flutuante}
 {Erro: Função 'principal' deveria retornar inteiro, mas retorna vazio}
 
+
 flutuante: a
 inteiro: b
 
