@@ -1,5 +1,7 @@
 
 inteiro fatorial(inteiro: n, flutuante: m)
+	n:=5
+	n:= n +5
 	se 0 < 6 então
 		inteiro: a
 		a:=50
@@ -7,7 +9,7 @@ inteiro fatorial(inteiro: n, flutuante: m)
 	a:=58
 	
 	fim
-	retorna(2+5)
+	retorna(2)
 fim
 
 inteiro principal()

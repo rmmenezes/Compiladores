@@ -52,7 +52,7 @@ class Syn:
         '''declaracao : declaracao_variaveis
                       | inicializacao_variaveis
                       | declaracao_funcao'''
-        p[0] = Tree('declaracao', [p[1]])
+        p[0] = Tree('declaracao', [p[1]], '', p.lineno(1))
 
     def p_declaracao_variaveis(self, p):
         '''declaracao_variaveis : tipo DOIS_PONTOS lista_variaveis'''
@@ -79,6 +79,7 @@ class Syn:
         else:
             p[0] = Tree('var', [p[2]], p[1], p.lineno(1))
 
+
     def p_indice(self, p):
         '''indice : indice ABRE_COUCH expressao FECHA_COUCH
                   | ABRE_COUCH expressao FECHA_COUCH'''
@@ -96,9 +97,9 @@ class Syn:
         '''declaracao_funcao : tipo cabecalho
                              | cabecalho'''
         if len(p) == 3:
-            p[0] = Tree('declaracao_funcao', [p[1], p[2]])
+            p[0] = Tree('declaracao_funcao', [p[1], p[2]], '', p.lineno(2))
         else:
-            p[0] = Tree('declaracao_funcao', [p[1]])
+            p[0] = Tree('declaracao_funcao', [p[1]], '', p.lineno(1))
 
     def p_cabecalho(self, p):
         '''cabecalho : ID ABRE_PAREN lista_parametros FECHA_PAREN corpo FIM'''
@@ -153,15 +154,15 @@ class Syn:
 
     def p_atribuicao(self, p):
         '''atribuicao : var ATRIBUICAO expressao'''
-        p[0] = Tree('atribuicao', [p[1], p[3]])
+        p[0] = Tree('atribuicao', [p[1], p[3]], '', p.lineno(2))
 
     def p_leia(self, p):
         '''leia : LEIA ABRE_PAREN var FECHA_PAREN'''
-        p[0] = Tree('leia', [p[3]])
+        p[0] = Tree('leia', [p[3]],'' ,p.lineno(1))
 
     def p_escreva(self, p):
         '''escreva : ESCREVA ABRE_PAREN expressao FECHA_PAREN '''
-        p[0] = Tree('escreva', [p[3]])
+        p[0] = Tree('escreva', [p[3]],'' ,p.lineno(1))
 
     def p_retorna(self, p):
         '''retorna : RETORNA ABRE_PAREN expressao FECHA_PAREN '''
@@ -179,7 +180,7 @@ class Syn:
                                | DIFERENTE
                                | MENOR_IGUAL
                                | MAIOR_IGUAL'''
-        p[0] = Tree('operador_relacional', [], str(p[1]))
+        p[0] = Tree('operador_relacional', [], str(p[1]), p.lineno(1))
 
     def p_operador_soma(self, p):
         '''operador_soma : MAIS

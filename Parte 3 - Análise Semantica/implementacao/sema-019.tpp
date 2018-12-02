@@ -2,25 +2,23 @@
 
 inteiro: n
 flutuante: x, y, z
-n:=5
+
 inteiro fatorial(inteiro: n, flutuante: m)
 	{NOTAÇÃO CIENTÍFICA}
 	{WARNING: 'm' ESTÁ RECEBENDO VALORES DE TIPOS DIFERENTES}
-	m := 5.5
+	m := 5
 	
 	se n>0 então
-		retorna(n)
 	senão
 		repita 
 			flutuante: p
-		até n = 0
+		até 5 = 0
 	fim
 	
 	z := 1.9 {SEM ERRO, FOI INICIALIZADO}
 	z := z+1 {ERRO, ID NAO FOI INICIALIZADO}
 
 	{WARNING DE RETORNO: PASSANDO TIPO DIFERENTE}
-	retorna(m)
 fim
 
 inteiro principal()

@@ -5,9 +5,20 @@
 
 inteiro: a
 flutuante: b
-inteiro: c[1.2]
+b:=10
+
+bubble_sort(inteiro: x)
+  repita
+    repita
+      se 1 > 10 então
+        inteiro: temp
+        temp := 155
+        escreva(a)
+      fim
+    até b < 1
+  até 5 > 5
+  retorna(x)
+fim
 
 inteiro principal()
-  c[5.8] := 10
-    
 fim
