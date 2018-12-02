@@ -185,7 +185,7 @@ class Syn:
     def p_operador_soma(self, p):
         '''operador_soma : MAIS
                          | MENOS'''
-        p[0] = Tree('operador_soma', [], str(p[1]))
+        p[0] = Tree('operador_soma', [], str(p[1]), p.lineno(1))
     
     def p_operador_logico(self, p):
         '''operador_logico : E_LOGICO

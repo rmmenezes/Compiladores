@@ -151,44 +151,27 @@ class Verifica_Arvore():
                         index = e.valor
                         if int(float(index)) != None and find_e.indice < int(float(index)):
                             print("Erro: O vetor '" + variavel.value + "' que deseja atribuir, esta fora do range declarado")
-                    else:
-                        print("BLA")
                 else:
                     expressao = self.resolve_expressao(filho.child[1], TabSimb, pilhaEscopos[-1])
-                    tipo = expressao[0]
-                    valor = expressao[1]
+                    tipo = expressao
                     index = int(float(index))
                     if index < find_e.indice:
                         find_e.used = True
-                        if tipo == find_e.tipo:
-                            find_e.valor[index] = valor
-                        else:
-                            print("Linha:["+str(filho.linha)+"] Aviso: A variavel '" + find_e.nome + "' tem tipo '" + find_e.tipo + "' mas esta recebendo um valor '" + str(valor) + "' de tipo '"+ tipo +"' hove a alterção deste tipo para o tipo da variavel a ser atribuida")
-                            novo_valor = self.muda_o_tipo(find_e.tipo, valor)
-                            find_e.valor = novo_valor
+                        if find_e.tipo != tipo:
+                            print("Linha:["+str(filho.linha)+"] Aviso: A variavel '" + find_e.nome + "' tem tipo '" + find_e.tipo + "' mas esta recebendo um valor de tipo '"+ tipo +"' hove a alterção deste tipo para o tipo da variavel a ser atribuida")
             else:
                 if filho.child[1].child[0].type == "chamada_funcao":
                     find_f = TabSimb.find_funcao(filho.child[1].child[0].value)
-                    print("find_f.nome")
                     tipo = find_f.tipo_retorno
                     find_e.used = True
-                    if tipo == find_e.tipo:
-                        find_e.valor = valor
-                    else:
-                        print("Linha:["+str(filho.linha)+"] Aviso: A variavel '" + find_e.nome + "' tem tipo '" + find_e.tipo + "' mas esta recebendo um valor '"+ str(valor) + "' de tipo '"+ tipo +"' hove a alterção deste tipo para o tipo da variavel a ser atribuida")
-                        novo_valor = self.muda_o_tipo(find_e.tipo, valor)
-                        find_e.valor = novo_valor
+                    if find_e.tipo != tipo:
+                        print("Linha:["+str(filho.linha)+"] Aviso: A variavel '" + find_e.nome + "' tem tipo '" + find_e.tipo + "' mas esta recebendo um valor de tipo '"+ tipo +"' hove a alterção deste tipo para o tipo da variavel a ser atribuida")
                 else:
                     expressao = self.resolve_expressao(filho.child[1], TabSimb, pilhaEscopos[-1])
-                    tipo = expressao[0]
-                    valor = expressao[1]
+                    tipo = expressao
                     find_e.used = True
-                    if tipo == find_e.tipo:
-                        find_e.valor = valor
-                    else:
-                        print("Linha:["+str(filho.linha)+"] Aviso: A variavel '" + find_e.nome + "' tem tipo '" + find_e.tipo + "' mas esta recebendo um valor '" + str(valor) + "' de tipo '"+ tipo +"' hove a alterção deste tipo para o tipo da variavel a ser atribuida")
-                        novo_valor = self.muda_o_tipo(find_e.tipo, valor)
-                        find_e.valor = novo_valor
+                    if find_e.tipo != tipo:
+                        print("Linha:["+str(filho.linha)+"] Aviso: A variavel '" + find_e.nome + "' tem tipo '" + find_e.tipo + "' mas esta recebendo um valor de tipo '"+ tipo +"' hove a alterção deste tipo para o tipo da variavel a ser atribuida")
 
     def str_or_int(self, s):
         try:
@@ -214,96 +197,21 @@ class Verifica_Arvore():
         elif str(type(no.value)) == "<class 'int'>":
             return "inteiro"
 
-    def devolve_valor_final_expressao(self, filho_esquerda, operador, filho_direita, TabSimb):
-        num_direito = filho_direita.value
-        num_esquerdo = filho_esquerda.value
-        if str(filho_direita) == "var" and filho_direita != None:
-            find_e = TabSimb.find_elemento(filho_direita.value)
-            if find_e == None:
-                print("Linha:["+str(filho_direita.linha)+"] Erro: A variavel '" + filho_direita.value + "' ainda não foi declarada")
-            elif find_e != None:
-                if find_e.valor == "null" and find_e.ehParametro == False:
-                    print("Erro: A variavel '" + filho_direita.value + "' não possui nenhum valor atribuido")
-                    exit(1)
-                elif find_e.valor == "null" and find_e.ehParametro == True:
-                    find_e.used = True
-                else:
-                    find_e.used = True
-                    num_direito = find_e.valor
-
-        if str(filho_esquerda) == "var" and filho_esquerda != None:
-            find_e = TabSimb.find_elemento(filho_esquerda.value)
-            if find_e == None:
-                print("Linha:["+str(filho_esquerda.linha)+"] Erro: A variavel '" + filho_esquerda.value + "' ainda não foi declarada")
-            elif find_e != None:
-                if find_e.valor == "null" and find_e.ehParametro == False:
-                    print("Erro: A variavel '" + filho_esquerda.value + "' não possui nenhum valor atribuido")
-                    exit(1)
-                elif find_e.valor == "null" and find_e.ehParametro == True:
-                    find_e.used = True
-                else:
-                    find_e.used = True
-                    num_esquerdo = find_e.valor
-
-        if operador.type == "operador_soma":
-            if operador.value == "+":
-                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
-                    return (str(num_direito) + " + " + str(num_esquerdo))
-                else: 
-                    return num_esquerdo + num_direito
-            else:
-                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
-                    return (str(num_direito) + " - " + str(num_esquerdo))
-                else:
-                    return num_esquerdo - num_direito
-        elif operador.type == "operador_multiplicacao":
-            if operador.value == "*":
-                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
-                    return (str(num_direito) + " * " + str(num_esquerdo))
-                else:
-                    return num_esquerdo * num_direito
-            else:
-                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
-                    return (str(num_direito) + " / " + str(num_esquerdo))
-                else:
-                    return num_esquerdo / num_direito
-
-        elif operador.type == "operador_relacional":
-            if operador.value == ">":
-                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
-                    return (str(num_direito) + " > " + str(num_esquerdo))
-                else:
-                    return num_esquerdo > num_direito
-            else:
-                if str(type(num_esquerdo)) == "<class 'str'>" or str(type(num_direito)) == "<class 'str'>":
-                    return (str(num_direito) + " < " + str(num_esquerdo))
-                else:
-                    return num_esquerdo < num_direito
-
-    def muda_o_tipo(self, tipo_cetro, valor):
-        if tipo_cetro == "inteiro" and str(type(valor)) != "<class 'str'>":
-            return int(float(valor))
-        elif tipo_cetro == "flutuante" and str(type(valor)) != "<class 'str'>":
-            return float(int(valor))
-        else:
-            return valor
-        
 
     def resolve_expressao(self, filho, TabSimb, funcao):
         if len(filho.child) == 1:
             funcao_escopo = TabSimb.find_funcao(funcao)
-            result = filho.child[0].value
             if filho.child[0].type == "var":
                 variavel = TabSimb.find_elemento(filho.child[0].value)
-                if variavel != None and (variavel.valor != "null" or variavel.ehParametro ==True):
+                variavel.used = True
+                if variavel != None or variavel.ehParametro ==True:
                     tipo_meio = self.retorna_o_tipo_do_no_passado(filho.child[0], TabSimb)
-                    return tipo_meio, variavel.valor
+                    return tipo_meio
                 else:
                     print("Linha:["+str(filho.child[0].linha)+"] Erro: A variavel '" + filho.child[0].value + "' ainda não foi declarada")
-                    exit(1)
             else:
                 tipo_meio = self.retorna_o_tipo_do_no_passado(filho.child[0], TabSimb)
-                return tipo_meio, result
+                return tipo_meio
         if len(filho.child) == 3:
             funcao_escopo = TabSimb.find_funcao(funcao)
             filho_esquerda = filho.child[0]
@@ -312,17 +220,14 @@ class Verifica_Arvore():
             tipo_direita = self.retorna_o_tipo_do_no_passado(filho_direita, TabSimb)
             tipo_esquerda = self.retorna_o_tipo_do_no_passado(filho_esquerda, TabSimb)
             if tipo_direita != tipo_esquerda:
-                print("Linha:["+str(operador.linha)+"] Aviso: A expressão trabalha com tipos diferentes " + tipo_direita + " e " + tipo_esquerda + " houve uma coerção implícita") 
-                novo_result = self.devolve_valor_final_expressao(filho_esquerda, operador, filho_direita, TabSimb)
-                return tipo_direita, novo_result
+                print("Linha:["+str(operador.linha)+"] Aviso: A expressão com o operador '" + str(operador.value) +"' trabalha com tipos diferentes " + tipo_direita + " e " + tipo_esquerda + " houve uma coerção implícita") 
+                return tipo_direita
             else:
-                result = self.devolve_valor_final_expressao(filho_esquerda, operador, filho_direita, TabSimb)
                 if tipo_esquerda != funcao_escopo.tipo_retorno and funcao_escopo.tipo_retorno != None:
                     print ("Linha:["+str(operador.linha)+"] Aviso: A funcão '" + str(funcao_escopo.nome) + "' deveria retornar '" + str(funcao_escopo.tipo_retorno) + "' mas retorna '" + str(tipo_esquerda) + "' houve uma coerção implícita")
-                    novo_result = self.muda_o_tipo(funcao_escopo.tipo_retorno, result)
-                    return funcao_escopo.tipo_retorno, novo_result
+                    return funcao_escopo.tipo_retorno
                 else:
-                    return tipo_direita, result 
+                    return tipo_direita
 
 
 
@@ -359,7 +264,7 @@ class Verifica_Arvore():
             for param in filho.child[1].child[0].child:
                 for tipo in param.child:
                     ehParametro = True
-                    TabSimb.inserir_elemento(param.value, tipo.value, "null", None, True, nome, ehParametro)
+                    TabSimb.inserir_elemento(param.value, tipo.value, None, True, nome, ehParametro)
                     lista_paramentros.append(param.value)
             if nome == "principal":
                 TabSimb.TemPrincipal = True
@@ -371,7 +276,7 @@ class Verifica_Arvore():
             for param in filho.child[0].child[0].child:
                 for tipo in param.child:
                     ehParametro = True
-                    TabSimb.inserir_elemento(param.value, tipo.value, "null", None, True, nome, ehParametro)
+                    TabSimb.inserir_elemento(param.value, tipo.value, None, True, nome, ehParametro)
                     lista_paramentros.append(param.value)
             if nome == "principal":
                 TabSimb.TemPrincipal = True
@@ -392,9 +297,9 @@ class Verifica_Arvore():
                 v = []
                 for i in range(int(float(index))):
                     v.append('null')
-                TabSimb.inserir_elemento(variavel.value, tipo, v, index, False, pilhaEscopos[-1], False, variavel.linha)
+                TabSimb.inserir_elemento(variavel.value, tipo, index, False, pilhaEscopos[-1], False, variavel.linha)
             else:
-                TabSimb.inserir_elemento(variavel.value, tipo, "null", index, False, pilhaEscopos[-1], False, variavel.linha)
+                TabSimb.inserir_elemento(variavel.value, tipo, index, False, pilhaEscopos[-1], False, variavel.linha)
 
     def declaracao_variaveis(self, filho, TabSimb):
         resultado = self.get_no_folhas_para_variaveis(filho.child[1])
@@ -430,8 +335,8 @@ class TabelaSimbolos():
     def pega_lista_funcoes(self):
         return self.lista_funcoes
 
-    def inserir_elemento(self, nome, tipo, valor, indice, used, Escopo, ehParametro, linha=None):
-        self.lista_elementos.append(Elemento(nome, Escopo, tipo, valor, indice, used, ehParametro, linha))
+    def inserir_elemento(self, nome, tipo, indice, used, Escopo, ehParametro, linha=None):
+        self.lista_elementos.append(Elemento(nome, Escopo, tipo, indice, used, ehParametro, linha))
 
     def inserir_funcao(self, nome, tipo_retorno, foi_retornada, lista_paramentros, used, linha=None):
         escopo_pai = pilhaEscopos[-1]
@@ -447,11 +352,9 @@ class TabelaSimbolos():
         print("### TABELA DE SIMBOLOS ###")
         for e in self.lista_elementos:
             if(e.indice):
-                print("Tipo: " + str(e.tipo) + " Nome: " + str(e.nome) + " Indice: " + str(e.indice) +
-                      " Valor: " + str(e.valor) + " Escopo: " + str(e.escopo) + " Usada: " + str(e.used))
+                print("Tipo: " + str(e.tipo) + " Nome: " + str(e.nome) + " Indice: " + str(e.indice) + " Escopo: " + str(e.escopo) + " Usada: " + str(e.used))
             else:
-                print("Tipo: " + str(e.tipo) + " Nome: " + str(e.nome) + " Valor: " +
-                      str(e.valor) + " Escopo: " + str(e.escopo) + " Usada: " + str(e.used))
+                print("Tipo: " + str(e.tipo) + " Nome: " + str(e.nome) + " Escopo: " + str(e.escopo) + " Usada: " + str(e.used))
 
     def find_elemento(self, var):
         for escopo in pilhaEscopos:
@@ -490,11 +393,10 @@ class TabelaSimbolos():
             
 
 class Elemento():
-    def __init__(self, nome, escopo, tipo, valor, indice, used, ehParametro, linha=None):
+    def __init__(self, nome, escopo, tipo, indice, used, ehParametro, linha=None):
         self.nome = nome
         self.escopo = escopo
         self.tipo = tipo
-        self.valor = valor
         self.used = used
         self.indice = indice
         self.ehParametro = ehParametro
@@ -507,9 +409,6 @@ class Elemento():
         else:
             print("Erro: Variavel ainda não declarada")
             exit(1)
-
-    def set_valor(self, elemento, valor, TabSimb):
-        elemento.valor = valor
 
     def get_tipo(self, elemento):
         return elemento.tipo

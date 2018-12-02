@@ -1,13 +1,8 @@
-{Aviso: Coerção implícita do valor de 'b'}
-{Aviso: Coerção implícita do valor de 'a'}
-{Erro: Função principal deveria retornar inteiro, mas retorna vazio}
-
-flutuante: a
-inteiro: b
+inteiro funcao()
+	retorna(1)
+fim
 
 inteiro principal()
-	b := 18
-	a := 1.0
-	a := b
-	b := a
+	funcao()
+	retorna(0)
 fim
