@@ -34,9 +34,6 @@ class Verifica_Arvore():
                     self.ate(filho, TabSimb)
                 elif filho.type == "fim":
                     self.fim(filho, TabSimb)
-                
-                
-                # elif filho.type == "até":
                 if not isinstance(filho, Tree):
                     return
                 self.andar(filho, TabSimb)
@@ -182,7 +179,6 @@ class Verifica_Arvore():
         except ValueError:
             return "varivael"
 
-
     def retorna_o_tipo_do_no_passado(self, no, TabSimb):
         if str(type(no.value)) == "<class 'str'>":
             if self.str_or_int(no.value) == "inteiro":
@@ -233,8 +229,6 @@ class Verifica_Arvore():
                     return funcao_escopo.tipo_retorno
                 else:
                     return tipo_direita
-
-
 
     def retorna(self, filho, TabSimb):
         funcao = TabSimb.find_funcao(pilhaEscopos[-1])
@@ -427,7 +421,7 @@ class Elemento():
 if __name__ == '__main__':
     now = datetime.now()
     root = Syn()                        # Chama o analisador Sintatico
-    TrimTree(root.ps)                   # Poda a arvore
+    Run(root.ps)                        # Poda a arvore
     dot = Digraph(comment='TREE')       # Abaixo é o processo de impressão
     Sintatico = Verifica_Arvore()
     TabSimb = TabelaSimbolos()
