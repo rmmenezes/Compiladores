@@ -3,413 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9c4eb2ac-a5ff-425e-9c51-e558fc740da7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 2 - Análise Sintática/implementacao/lex.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parte 2 - Análise Sintática/implementacao/lex.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 2 - Análise Sintática/implementacao/syn.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parte 2 - Análise Sintática/implementacao/syn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidabubble_sort.tpp6-11-2018h18m36s0.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidabubble_sort.tpp6-11-2018h18m36s0.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidabubble_sort.tpp6-11-2018h18m46s27.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidabubble_sort.tpp6-11-2018h18m46s27.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidabubble_sort.tpp7-11-2018h20m3s4.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidabubble_sort.tpp7-11-2018h20m3s4.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h0m52s42.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h0m52s42.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h0m55s49.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h0m55s49.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h0m57s3.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h0m57s3.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h14m23s7.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h14m23s7.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h14m27s22.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h14m27s22.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h14m28s39.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h14m28s39.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h14m28s6.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h14m28s6.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h14m37s15.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h14m37s15.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h14m39s4.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h14m39s4.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m15s50.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m15s50.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m16s21.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m16s21.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m1s25.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m1s25.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m21s53.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m21s53.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m22s34.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m22s34.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m22s52.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m22s52.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m4s43.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m4s43.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m8s22.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m8s22.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m8s4.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h15m8s4.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h16m7s12.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h16m7s12.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m34s27.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m34s27.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m36s18.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m36s18.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m37s51.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m37s51.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m43s24.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m43s24.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m43s40.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m43s40.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m44s45.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m44s45.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m58s16.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h19m58s16.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m15s36.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m15s36.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m16s53.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m16s53.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m17s42.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m17s42.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m21s42.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m21s42.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m22s7.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m22s7.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m24s32.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m24s32.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m40s25.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m40s25.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m40s41.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m40s41.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m45s8.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m45s8.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m59s53.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m59s53.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m8s47.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m8s47.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m9s0.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h20m9s0.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h21m12s28.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp10-11-2018h21m12s28.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m27s20.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m27s20.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m27s50.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m27s50.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m56s51.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m56s51.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m57s47.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m57s47.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m58s28.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m58s28.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m58s49.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m58s49.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m59s9.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h0m59s9.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h1m0s5.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h1m0s5.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h1m14s47.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h1m14s47.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h1m3s52.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h1m3s52.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h2m12s32.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h2m12s32.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h2m19s6.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp11-11-2018h2m19s6.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp6-11-2018h18m46s48.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp6-11-2018h18m46s48.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp6-11-2018h18m48s21.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp6-11-2018h18m48s21.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m1s47.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m1s47.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m24s10.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m24s10.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m24s55.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m24s55.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m25s51.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m25s51.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m26s19.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m26s19.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m26s44.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m26s44.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m28s10.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m28s10.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m31s37.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m31s37.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m32s11.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m32s11.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m32s15.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m32s15.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m32s38.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m32s38.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m48s52.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m48s52.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m49s9.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m49s9.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m4s55.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h20m4s55.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h21m40s28.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h21m40s28.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h21m42s51.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h21m42s51.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m11s20.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m11s20.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m18s2.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m18s2.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m1s50.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m1s50.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m1s8.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m1s8.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m20s19.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m20s19.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m20s48.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m20s48.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m21s49.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m21s49.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m7s2.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp7-11-2018h22m7s2.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m18s42.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m18s42.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m19s49.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m19s49.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m23s44.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m23s44.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m30s25.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m30s25.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m31s29.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m31s29.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m32s41.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m32s41.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m33s14.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m33s14.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m36s49.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m36s49.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m52s32.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m52s32.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m59s5.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m59s5.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m5s9.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h0m5s9.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h10m56s23.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h10m56s23.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m2s14.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m2s14.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m2s30.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m2s30.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m37s14.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m37s14.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m39s56.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m39s56.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m40s7.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m40s7.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m41s19.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m41s19.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m41s42.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m41s42.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m47s50.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m47s50.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m50s13.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m50s13.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m6s2.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h11m6s2.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h12m12s9.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h12m12s9.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h12m17s7.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h12m17s7.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h12m5s51.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h12m5s51.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h15m43s37.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h15m43s37.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h15m48s0.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h15m48s0.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h16m41s27.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h16m41s27.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h16m43s13.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h16m43s13.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h16m54s6.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h16m54s6.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h17m21s26.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h17m21s26.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h19m14s13.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h19m14s13.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h19m17s11.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h19m17s11.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h1m12s33.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h1m12s33.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h1m9s48.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h1m9s48.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h2m36s8.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h2m36s8.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h2m42s29.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp8-11-2018h2m42s29.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp9-11-2018h11m14s16.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp9-11-2018h11m14s16.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp9-11-2018h11m23s46.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp9-11-2018h11m23s46.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp9-11-2018h11m32s52.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidaerro-003.tpp9-11-2018h11m32s52.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-001.tpp10-11-2018h0m58s54.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-001.tpp10-11-2018h0m58s54.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-001.tpp12-11-2018h12m33s21.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-001.tpp12-11-2018h12m33s21.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-001.tpp12-11-2018h12m33s46.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-001.tpp12-11-2018h12m33s46.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-001.tpp12-11-2018h12m33s50.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-001.tpp12-11-2018h12m33s50.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h14m41s26.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h14m41s26.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h14m41s54.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h14m41s54.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h14m42s13.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h14m42s13.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h17m33s50.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h17m33s50.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h17m36s7.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h17m36s7.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h18m22s34.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h18m22s34.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h21m27s10.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h21m27s10.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h21m30s7.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h21m30s7.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h22m28s23.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h22m28s23.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h22m30s10.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h22m30s10.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h23m13s32.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h23m13s32.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h23m14s5.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h23m14s5.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h23m24s19.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h23m24s19.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h23m27s28.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-002.tpp11-11-2018h23m27s28.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp11-11-2018h23m41s25.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp11-11-2018h23m41s25.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp12-11-2018h12m33s54.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp12-11-2018h12m33s54.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp12-11-2018h12m34s18.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp12-11-2018h12m34s18.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp12-11-2018h12m34s5.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp12-11-2018h12m34s5.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp12-11-2018h12m37s15.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp12-11-2018h12m37s15.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp12-11-2018h13m18s36.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp12-11-2018h13m18s36.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp12-11-2018h13m8s35.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-003.tpp12-11-2018h13m8s35.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-005.tpp12-11-2018h0m17s45.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-005.tpp12-11-2018h0m17s45.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-005.tpp12-11-2018h0m32s27.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-005.tpp12-11-2018h0m32s27.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-005.tpp12-11-2018h0m33s37.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-005.tpp12-11-2018h0m33s37.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-005.tpp12-11-2018h13m39s37.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-005.tpp12-11-2018h13m39s37.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-005.tpp12-11-2018h13m49s35.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-005.tpp12-11-2018h13m49s35.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-005.tpp12-11-2018h13m59s46.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-005.tpp12-11-2018h13m59s46.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h14m8s25.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h14m8s25.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h16m37s42.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h16m37s42.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h16m39s34.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h16m39s34.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h16m40s20.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h16m40s20.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h1m16s12.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h1m16s12.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h1m22s17.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h1m22s17.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h1m22s36.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h1m22s36.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h1m5s28.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h1m5s28.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h2m17s43.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h2m17s43.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h2m34s2.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h2m34s2.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h2m6s2.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-006.tpp12-11-2018h2m6s2.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h19m21s49.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h19m21s49.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h19m25s6.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h19m25s6.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h19m42s42.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h19m42s42.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h19m43s21.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h19m43s21.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h20m10s6.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h20m10s6.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h20m37s19.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h20m37s19.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h20m38s46.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h20m38s46.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h20m52s20.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h20m52s20.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h20m53s22.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h20m53s22.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h20m55s16.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h20m55s16.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h3m57s23.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasema-008.tpp12-11-2018h3m57s23.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m14s10.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m14s10.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m14s49.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m14s49.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m16s0.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m16s0.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m16s27.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m16s27.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m17s3.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m17s3.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m18s28.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m18s28.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m4s5.gv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/PrintArvore/Saidasintatica-testes/bubble_sort.tpp23-10-2018h15m4s5.gv.pdf.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/bubble_sort.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/erro-003.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/lex.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/parser.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/parsetab.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-001.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-002.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-003.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-004.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-005.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-006.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-007.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-008.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-009.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-010.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-011.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-012.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-013.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-014.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-015.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-016.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-017.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-018.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sema-019.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/Busca_Linear_1061992.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/erro-001.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/erro-002.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/erro-004.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/erro-005.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/erro-006.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/erro-007.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/expressoes.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/fat.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/multiplicavetor.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/primo.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/somavet.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/teste-1.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/sintatica-testes/teste-2.tpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/syn.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/teste.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/relatorio/BCC36B__Relatorio_P[2]__Rafael_Menezes_Barboza__1817485.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/sin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/anlexsyn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/sema-006.tpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/sema-006.tpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/sema-007.tpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/sema-007.tpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/sema-011.tpp" beforeDir="false" afterPath="$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/sema-011.tpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/syn.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/syn.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -421,12 +18,13 @@
     <session id="-148179718">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="2" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.7" value="2" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -455,8 +53,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/syn.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/semantica.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -484,6 +87,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -500,7 +104,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -568,10 +171,11 @@
     <entry file="file://$PROJECT_DIR$/Parte 2 - Análise Sintática/fat.tpp" />
     <entry file="file://$PROJECT_DIR$/Parte 2 - Análise Sintática/syn.py" />
     <entry file="file://$PROJECT_DIR$/Parte 2 - Análise Sintática/implementacao/sin.py" />
-    <entry file="file://$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/poda.py">
+    <entry file="file://$PROJECT_DIR$/Parte 3 - Análise Sintática - Copia/implementacao/poda.py" />
+    <entry file="file://$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/syn.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/syn.py">
+    <entry file="file://$PROJECT_DIR$/Parte 3 - Análise Semantica/implementacao/semantica.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
