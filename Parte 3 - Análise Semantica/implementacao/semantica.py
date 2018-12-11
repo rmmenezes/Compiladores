@@ -417,7 +417,6 @@ class Elemento():
     def set_tipo(self, elemento, tipo):
         elemento.tipo = tipo
 
-
 if __name__ == '__main__':
     now = datetime.now()
     root = Syn()                        # Chama o analisador Sintatico

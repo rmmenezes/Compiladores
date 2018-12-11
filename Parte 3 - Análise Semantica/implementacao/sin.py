@@ -542,20 +542,20 @@ if __name__ == '__main__':
     Sintatico = Verifica_Arvore()
     root = Syn()
     TabSimb = TabelaSimbolos()
-    TrimTree(root.ps)
+    Run(root.ps)
     dot = Digraph(comment='TREE')
     print_tree(root.ps, dot)
-    print(dot.source)
+    #print(dot.source)
     dot.render('PrintArvore/Saida'+str(sys.argv[1])+str(now.day)+'-'+str(now.month)+'-'+ str(now.year)+'h'+ str(now.hour)+'m'+str(now.minute)+'s'+str(now.second)+'.gv.pdf', view=True)
     #Sintatico.andar(root.ps, TabSimb)
     TabSimb.conferir_variaveis_usadas()     #VERIFICA SE AS VARIAVEIS SAO USADAS OU NAO
     TabSimb.conferir_funcoes_declaradas()
 
-    #if(TabSimb.TemPrincipal == False):      #VERIFICA SE TEM A FUNÇÃO PRINCIPAL
-    #    print ("Erro: Função principal não declarada")
-    #    exit(1)
-    #else:
-    #    TabSimb.print_pilha()
-    #    TabSimb.print_tabela_simbolos()
-    #    TabSimb.print_tabela_funcoes()
+    if(TabSimb.TemPrincipal == False):      #VERIFICA SE TEM A FUNÇÃO PRINCIPAL
+        print ("Erro: Função principal não declarada")
+        exit(1)
+    else:
+        TabSimb.print_pilha()
+        TabSimb.print_tabela_simbolos()
+        TabSimb.print_tabela_funcoes()
         

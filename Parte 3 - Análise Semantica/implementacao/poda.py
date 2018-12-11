@@ -68,16 +68,17 @@ def Run(no):
     remove_2(no)  
             
 
-def print_tree(no, dot, i="0", pai=None):
-    if no != None:
-        filho = str(no) + str(i)
-        dot.no(filho, str(no))
+def print_tree(node, dot, i="0", pai=None):
+    if node != None:
+        filho = str(node) + str(i)
+        dot.node(filho, str(node))
         if pai: dot.edge(pai, filho)
         j = "0"
-        if not isinstance(no, Tree): return
-        for no in no.child:
+        if not isinstance(node, Tree): return
+        for son in node.child:
             j+="1"
-            print_tree(no, dot, i+j, filho) 
+            print_tree(son, dot, i+j, filho) 
+
 
 if __name__ == "__main__":
     now = datetime.now()
@@ -86,7 +87,7 @@ if __name__ == "__main__":
         Run(syn.ps)
         dot = Digraph(comment="TREE")
         print_tree(syn.ps, dot)
-        print(dot.source)
+        #print(dot.source)
         dot.render("PrintArvore/Saida"+str(sys.argv[1])+str(now.day)+"-"+str(now.month)+"-"+ str(now.year)+"h"+ str(now.hour)+"m"+str(now.minute)+"s"+str(now.second)+".gv.pdf", view=True)
     else:
         print("Erro de arquivo XD!")
