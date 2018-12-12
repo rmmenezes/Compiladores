@@ -1,5 +1,5 @@
 {Declaração de variáveis}
-inteiro: a, b, c
+inteiro: a
 
 inteiro principal()
 	inteiro: b
@@ -7,8 +7,6 @@ inteiro principal()
 	a := 10
 
 	b := a 
-
-	c := 10 + 10
 	
     retorna(0)
 fim
