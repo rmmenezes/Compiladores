@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 ### Rafael Menzes Barboza, RA: 1817485 ###
 from syn import Syn
 from syn import Tree
