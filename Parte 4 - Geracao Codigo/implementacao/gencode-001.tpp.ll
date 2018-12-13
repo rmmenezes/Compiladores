@@ -9,12 +9,11 @@ main.start:
   %"return" = alloca i32
   %"b" = alloca i32, align 4
   store i32 10, i32* @"a"
-  %"varTemp" = load i32, i32* @"a", align 4
+  %"varTemp" = load i32, i32* @"a"
   store i32 %"varTemp", i32* %"b"
   br label %"main.end"
-retorna.start:
-  store i32 0, i32* %"return"
-retorna.fim:
-  %"b.1" = alloca i32, align 4
 main.end:
+  store i32 0, i32* %"return"
+  %"ret" = load i32, i32* %"return"
+  ret i32 %"ret"
 }
