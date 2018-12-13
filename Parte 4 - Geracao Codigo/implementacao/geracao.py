@@ -28,10 +28,12 @@ class Gerador_TOP:
             else:
                 return
 
-    def retorna(self, filho, modulo, builder, nome, retorna, final_da_funcao):
+    def retorna(self, filho, modulo, builder, nome, retorna):
         inicio_retorna = self.lista_ponteiros_funcoes[-1].append_basic_block('retorna.start')
         fim_retorna = self.lista_ponteiros_funcoes[-1].append_basic_block('retorna.fim')
-        builder.branch(inicio_retorna)
+        bloco_de_saida = self.lista_ponteiros_funcoes[-1].append_basic_block('%s.end' % nome)
+
+        builder.branch(bloco_de_saida)
         with builder.goto_block(inicio_retorna):
             resltado_retorno = self.resolve_expressao(filho.child[0], modulo)
             i=0
@@ -39,11 +41,10 @@ class Gerador_TOP:
                 if self.lista_ponteiros_variaveis[i].name == "return":
                     builder.store(resltado_retorno, self.lista_ponteiros_variaveis[i])
                 i = i + 1
-            builder.branch(final_da_funcao)
-
+        
         builder.position_at_end(fim_retorna)
 
-    def chama_retorna(self, builder, variavel_retorna, retorno_da_funcao, final_da_funcao, funcao_atual):
+    def chama_retorna(self, builder, variavel_retorna, retorno_da_funcao, final_da_funcao, funcao_atual, nome):
         inicio_retorna = funcao_atual.append_basic_block('retorna.start')
 
         builder.branch(inicio_retorna)
@@ -79,20 +80,18 @@ class Gerador_TOP:
         self.lista_ponteiros_funcoes.append(funcao)
 
         bloco_de_entrada = funcao.append_basic_block('%s.start' % nome)
-        bloco_de_saida = funcao.append_basic_block('%s.end' % nome)
 
         self.builder = ir.IRBuilder(bloco_de_entrada)
 
-        # Entrando na função funcao_declarada
-        with self.builder.goto_entry_block():
-            retorna = self.declara_local_var(self.builder, tipo_de_retorno, 'return')
-            self.lista_ponteiros_variaveis.append(retorna)
-            corpo = filho.child[1].child[1]
-            self.resolve_corpo(corpo, modulo, self.builder, nome, retorna, bloco_de_saida)
+        retorna = self.declara_local_var(self.builder, tipo_de_retorno, 'return')
+        self.lista_ponteiros_variaveis.append(retorna)
+
+        corpo = filho.child[1].child[1]
+        self.resolve_corpo(corpo, modulo, self.builder, nome, retorna)
 
 
 
-    def resolve_corpo(self, raiz, modulo, builder, nome, valor_de_retorno, final_da_funcao):
+    def resolve_corpo(self, raiz, modulo, builder, nome, valor_de_retorno):
         if raiz:
             for filho in raiz.child:
                 if filho.type == "declaracao_variaveis":
@@ -100,9 +99,9 @@ class Gerador_TOP:
                 if filho.type == "atribuicao":
                     self.atribuicao(raiz, filho, modulo, builder)
                 if filho.type == "retorna":
-                    self.retorna(filho, modulo, builder, nome, valor_de_retorno, final_da_funcao)
+                    self.retorna(filho, modulo, builder, nome, valor_de_retorno)
                 if not isinstance(filho, Tree): return
-                self.resolve_corpo(filho, modulo, builder, nome, valor_de_retorno, final_da_funcao)
+                self.resolve_corpo(filho, modulo, builder, nome, valor_de_retorno)
         else:
             return
 
@@ -174,7 +173,7 @@ class Gerador_TOP:
             i = i + 1
         # ↑ O codigo a cima faz o papel de encontrar a variavel ↑ 
         resultado = self.resolve_expressao(filho.child[1], modulo)
-        builder.store(resultado, variavel, align=4)
+        builder.store(resultado, variavel)
 
 
     def declaracao_variaveis(self, raiz, filho, modulo, builder):
