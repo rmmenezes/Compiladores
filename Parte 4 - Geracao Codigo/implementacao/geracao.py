@@ -17,6 +17,7 @@ class Gerador_TOP:
         self.lista_ponteiros_funcoes = []
         self.contador_se = 0
         self.conta_repita = 0
+        self.l = None
 
     def andar(self, raiz, modulo):
             if raiz:
@@ -85,18 +86,32 @@ class Gerador_TOP:
             for filho in raiz.child:
                 if filho.type == "declaracao_variaveis":
                     self.llvm_declaracao_variavel_local(filho, builder)
-                if filho.type == "atribuicao":
+                elif filho.type == "atribuicao":
                     self.atribuicao(filho, modulo, builder)
-                if filho.type == "se":
+                elif filho.type == "se":
                     self.se(filho, modulo, builder)
-                if filho.type == "retorna":
-                    self.retorna(filho, modulo, builder)
-                if filho.type == "repita":
+                elif filho.type == "repita":
                     self.repita(filho, modulo, builder)
-                if not isinstance(filho, Tree): return
+                elif filho.type == "leia":
+                    self.leia_func(filho, modulo, builder)
+                elif filho.type == "escreva":
+                    self.escreva(filho, modulo, builder)
+                elif filho.type == "retorna":
+                    self.retorna(filho, modulo, builder)
+                elif not isinstance(filho, Tree): return
                 self.resolve_corpo(filho, modulo, builder)
         else:
             return
+
+    def leia_func(self, filho, modulo, builder):
+        leia = ir.FunctionType(ir.IntType(32), [])
+        self.l = ir.Function(modulo, leia, "leia")
+        entrada = self.builder.call(self.l, [])
+        resultado = ir.Constant(ir.DoubleType(), entrada)
+        self.builder.ret(resultado)
+        
+    def escreva(self, filho, modulo, builder):
+        print("ESCREVA")
 
     def repita(self, filho, modulo, builder):
         repitatrue = self.lista_ponteiros_funcoes[-1].append_basic_block("repitatrue_"+str(self.conta_repita))
