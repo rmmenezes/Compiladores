@@ -15,6 +15,8 @@ class Gerador_TOP:
         self.funcao_main = None
         self.lista_ponteiros_variaveis = []
         self.lista_ponteiros_funcoes = []
+        self.contador_se = 0
+        self.conta_repita = 0
 
     def andar(self, raiz, modulo):
             if raiz:
@@ -28,7 +30,14 @@ class Gerador_TOP:
             else:
                 return
 
-    def retorna(self, filho, modulo, builder, nome, retorna):
+    def retorna(self, filho, modulo, builder):
+        i = 0
+        while i < len(self.lista_ponteiros_variaveis):
+            if self.lista_ponteiros_variaveis[i].name == "return":
+                retorna = self.builder.load(self.lista_ponteiros_variaveis[i], name="retorna", align=4)
+            i = i + 1
+
+        nome = self.lista_ponteiros_funcoes[-1].name
         bloco_de_saida = self.lista_ponteiros_funcoes[-1].append_basic_block('%s.end' % nome)
         builder.branch(bloco_de_saida)
         builder.position_at_end(bloco_de_saida)
@@ -68,22 +77,84 @@ class Gerador_TOP:
         self.lista_ponteiros_variaveis.append(retorna)
 
         corpo = filho.child[1].child[1]
-        self.resolve_corpo(corpo, modulo, self.builder, nome, retorna)
+        self.resolve_corpo(corpo, modulo, self.builder)
 
 
-    def resolve_corpo(self, raiz, modulo, builder, nome, valor_de_retorno):
+    def resolve_corpo(self, raiz, modulo, builder):
         if raiz:
             for filho in raiz.child:
                 if filho.type == "declaracao_variaveis":
                     self.llvm_declaracao_variavel_local(filho, builder)
                 if filho.type == "atribuicao":
-                    self.atribuicao(raiz, filho, modulo, builder)
+                    self.atribuicao(filho, modulo, builder)
+                if filho.type == "se":
+                    self.se(filho, modulo, builder)
                 if filho.type == "retorna":
-                    self.retorna(filho, modulo, builder, nome, valor_de_retorno)
+                    self.retorna(filho, modulo, builder)
+                if filho.type == "repita":
+                    self.repita(filho, modulo, builder)
                 if not isinstance(filho, Tree): return
-                self.resolve_corpo(filho, modulo, builder, nome, valor_de_retorno)
+                self.resolve_corpo(filho, modulo, builder)
         else:
             return
+
+    def repita(self, filho, modulo, builder):
+        repitatrue = self.lista_ponteiros_funcoes[-1].append_basic_block("repitatrue_"+str(self.conta_repita))
+        repitafalse = self.lista_ponteiros_funcoes[-1].append_basic_block("repitafalse_"+str(self.conta_repita))
+
+        
+
+
+    def se(self, filho, modulo, builder):
+        iftrue = self.lista_ponteiros_funcoes[-1].append_basic_block("iftrue_"+str(self.contador_se))
+        iffalse = self.lista_ponteiros_funcoes[-1].append_basic_block("iffalse_"+str(self.contador_se))
+        ifend = self.lista_ponteiros_funcoes[-1].append_basic_block("ifend_"+str(self.contador_se))
+
+        expressao = filho.child[0]
+        se_corpo1 = filho.child[1]
+        se_corpo2 = filho.child[2]
+
+        filho_esquerda = expressao.child[0]
+        operador = expressao.child[1]
+        filho_direita = expressao.child[2]
+        valor_filho_esquerda = expressao.child[0].value
+        valor_filho_direita = expressao.child[2].value
+        # ----------------------------------------------------------- #
+        if filho_direita.type == "var":
+            i = 0
+            while i < len(self.lista_ponteiros_variaveis):
+                if str(self.lista_ponteiros_variaveis[i].name) == valor_filho_direita:
+                    filho_direita = self.lista_ponteiros_variaveis[i]
+                i = i + 1
+            varTempRight = self.builder.load(filho_esquerda, name='varTempLeft')
+        elif filho_direita.type == "numero_int":
+            varTempRight = ir.Constant(ir.IntType(32), int(filho_direita.value))
+        elif filho_direita.type == "numero_float":
+            varTempRight = ir.Constant(ir.FloatType(), float(filho_direita.value))
+        # ----------------------------------------------------------- #
+        # ----------------------------------------------------------- #
+        if filho_esquerda.type == "var":
+            i = 0
+            while i < len(self.lista_ponteiros_variaveis):
+                if str(self.lista_ponteiros_variaveis[i].name) == valor_filho_esquerda:
+                    filho_esquerda = self.lista_ponteiros_variaveis[i]
+                i = i + 1
+            varTempLeft = self.builder.load(filho_esquerda, name='varTempLeft')
+        elif filho_esquerda.type == "numero_int":
+            varTempLeft = ir.Constant(ir.IntType(32), int(filho_esquerda.value))
+        elif filho_esquerda.type == "numero_float":
+            varTempLeft = ir.Constant(ir.FloatType(), float(filho_esquerda.value))
+        # ----------------------------------------------------------- #
+        If = self.builder.icmp_signed(">", varTempLeft, varTempRight, name="if_"+str(self.contador_se))
+        self.builder.cbranch(If, iftrue, iffalse)
+        self.builder.position_at_start(iftrue)
+        self.resolve_corpo(se_corpo1, modulo, builder)
+        self.builder.branch(ifend)
+        self.builder.position_at_start(iffalse)
+        self.resolve_corpo(se_corpo2, modulo, builder)
+        self.builder.branch(ifend)
+        self.builder.position_at_end(ifend)
+        self.contador_se = self.contador_se + 1
 
     def resolve_expressao(self, filho, modulo):
         # O no filho é do tipo EXPRESSAO ↑
@@ -108,11 +179,14 @@ class Gerador_TOP:
             filho_esquerda = filho.child[0]
             operador = filho.child[1]
             filho_direita = filho.child[2]
+            valor_filho_esquerda = str(filho_esquerda.value)
+            valor_filho_direita = str(filho_direita.value)
+            
             # ----------------------------------------------------------- #
             if filho_direita.type == "var":
                 i = 0
                 while i < len(self.lista_ponteiros_variaveis):
-                    if str(self.lista_ponteiros_variaveis[i].name) == str(filho_direita.value):
+                    if str(self.lista_ponteiros_variaveis[i].name) == valor_filho_direita:
                         filho_direita = self.lista_ponteiros_variaveis[i]
                     i = i + 1
                 varTempRight = self.builder.load(filho_esquerda, name='varTempLeft')
@@ -126,7 +200,7 @@ class Gerador_TOP:
             if filho_esquerda.type == "var":
                 i = 0
                 while i < len(self.lista_ponteiros_variaveis):
-                    if str(self.lista_ponteiros_variaveis[i].name) == str(filho_esquerda.value):
+                    if str(self.lista_ponteiros_variaveis[i].name) == valor_filho_esquerda:
                         filho_esquerda = self.lista_ponteiros_variaveis[i]
                     i = i + 1
                 varTempLeft = self.builder.load(filho_esquerda, name='varTempLeft')
@@ -143,8 +217,9 @@ class Gerador_TOP:
                 elif operador.value == "-":
                     varTempSub = self.builder.sub(varTempLeft, varTempRight, name="varTempSub")
                     return varTempSub
+            
 
-    def atribuicao(self, raiz, filho, modulo, builder):
+    def atribuicao(self,filho, modulo, builder):
         variavel = filho.child[0].value
         i = 0
         while i < len(self.lista_ponteiros_variaveis):
@@ -169,7 +244,7 @@ class Gerador_TOP:
                     variavel.initializer = ir.Constant(ir.FloatType(), 0.0)
                     variavel.linkage = "common"
                     variavel.align = 4
-            self.lista_ponteiros_variaveis.append(variavel)
+                self.lista_ponteiros_variaveis.append(variavel)
 
     def llvm_declaracao_variavel_local(self, filho, builder):
         tipo = filho.child[0].value

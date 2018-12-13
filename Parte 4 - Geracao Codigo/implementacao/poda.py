@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 ### Rafael Menzes Barboza, RA: 1817485 ###
 from syn import Syn
 from syn import Tree
 from lex import Lex
+from graphviz import Digraph
 from graphviz import Digraph
 import sys
 from datetime import datetime
