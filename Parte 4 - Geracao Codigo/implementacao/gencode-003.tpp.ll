@@ -14,14 +14,14 @@ main.start:
   br i1 %"if_0", label %"iftrue_0", label %"iffalse_0"
 iftrue_0:
   %"varTempLeft.1" = load i32, i32* @"a"
-  %"if_0.1" = icmp sgt i32 %"varTempLeft.1", 20
+  %"if_0.1" = icmp slt i32 %"varTempLeft.1", 20
   br i1 %"if_0.1", label %"iftrue_0.1", label %"iffalse_0.1"
 iffalse_0:
   store i32 0, i32* %"ret"
   br label %"ifend_0"
 ifend_0:
   %"varTempLeft.2" = load i32, i32* @"a"
-  %"if_2" = icmp sgt i32 %"varTempLeft.2", 20
+  %"if_2" = icmp slt i32 %"varTempLeft.2", 20
   br i1 %"if_2", label %"iftrue_2", label %"iffalse_2"
 iftrue_0.1:
   store i32 1, i32* %"ret"

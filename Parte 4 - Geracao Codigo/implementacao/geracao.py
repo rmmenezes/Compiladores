@@ -100,10 +100,55 @@ class Gerador_TOP:
 
     def repita(self, filho, modulo, builder):
         repitatrue = self.lista_ponteiros_funcoes[-1].append_basic_block("repitatrue_"+str(self.conta_repita))
-        repitafalse = self.lista_ponteiros_funcoes[-1].append_basic_block("repitafalse_"+str(self.conta_repita))
+        repitaend = self.lista_ponteiros_funcoes[-1].append_basic_block("repitaend_"+str(self.conta_repita))
 
+        corpo = filho.child[0]
+        expressao = filho.child[1]
+
+        filho_esquerda = expressao.child[0]
+        operador = expressao.child[1]
         
+        filho_direita = expressao.child[2]
+        valor_filho_esquerda = expressao.child[0].value
+        valor_filho_direita = expressao.child[2].value
+        # ----------------------------------------------------------- #
+        if filho_direita.type == "var":
+            i = 0
+            while i < len(self.lista_ponteiros_variaveis):
+                if str(self.lista_ponteiros_variaveis[i].name) == valor_filho_direita:
+                    filho_direita = self.lista_ponteiros_variaveis[i]
+                i = i + 1
+            varTempRight = self.builder.load(filho_direita, name='varTempLeft')
+        elif filho_direita.type == "numero_int":
+            varTempRight = ir.Constant(ir.IntType(32), int(filho_direita.value))
+        elif filho_direita.type == "numero_float":
+            varTempRight = ir.Constant(ir.FloatType(), float(filho_direita.value))
+        # ----------------------------------------------------------- #
+        # ----------------------------------------------------------- #
+        if filho_esquerda.type == "var":
+            i = 0
+            while i < len(self.lista_ponteiros_variaveis):
+                if str(self.lista_ponteiros_variaveis[i].name) == valor_filho_esquerda:
+                    filho_esquerda = self.lista_ponteiros_variaveis[i]
+                i = i + 1
+            varTempLeft = self.builder.load(filho_esquerda, name='varTempLeft')
+        elif filho_esquerda.type == "numero_int":
+            varTempLeft = ir.Constant(ir.IntType(32), int(filho_esquerda.value))
+        elif filho_esquerda.type == "numero_float":
+            varTempLeft = ir.Constant(ir.FloatType(), float(filho_esquerda.value))
+        # ----------------------------------------------------------- #   
+        if operador.value == "=":
+            operador = "==" 
+        else:
+            operador = operador.value    
+        repita = self.builder.icmp_signed(operador, varTempLeft, varTempRight, name="if_"+str(self.contador_se))
+        self.builder.branch(repitatrue)
 
+        self.builder.position_at_start(repitatrue)
+        self.resolve_corpo(corpo, modulo, builder)
+        self.builder.position_at_end(repitatrue)
+        self.builder.cbranch(repita, repitaend, repitatrue)
+        self.builder.position_at_end(repitaend)
 
     def se(self, filho, modulo, builder):
         iftrue = self.lista_ponteiros_funcoes[-1].append_basic_block("iftrue_"+str(self.contador_se))
@@ -126,7 +171,7 @@ class Gerador_TOP:
                 if str(self.lista_ponteiros_variaveis[i].name) == valor_filho_direita:
                     filho_direita = self.lista_ponteiros_variaveis[i]
                 i = i + 1
-            varTempRight = self.builder.load(filho_esquerda, name='varTempLeft')
+            varTempRight = self.builder.load(filho_direita, name='varTempLeft')
         elif filho_direita.type == "numero_int":
             varTempRight = ir.Constant(ir.IntType(32), int(filho_direita.value))
         elif filho_direita.type == "numero_float":
@@ -145,7 +190,7 @@ class Gerador_TOP:
         elif filho_esquerda.type == "numero_float":
             varTempLeft = ir.Constant(ir.FloatType(), float(filho_esquerda.value))
         # ----------------------------------------------------------- #
-        If = self.builder.icmp_signed(">", varTempLeft, varTempRight, name="if_"+str(self.contador_se))
+        If = self.builder.icmp_signed(operador.value, varTempLeft, varTempRight, name="if_"+str(self.contador_se))
         self.builder.cbranch(If, iftrue, iffalse)
         self.builder.position_at_start(iftrue)
         self.resolve_corpo(se_corpo1, modulo, builder)
@@ -189,7 +234,7 @@ class Gerador_TOP:
                     if str(self.lista_ponteiros_variaveis[i].name) == valor_filho_direita:
                         filho_direita = self.lista_ponteiros_variaveis[i]
                     i = i + 1
-                varTempRight = self.builder.load(filho_esquerda, name='varTempLeft')
+                varTempRight = self.builder.load(filho_direita, name='varTempLeft')
             elif filho_direita.type == "numero_int":
                 varTempRight = ir.Constant(ir.IntType(32), int(filho_direita.value))
             elif filho_direita.type == "numero_float":
