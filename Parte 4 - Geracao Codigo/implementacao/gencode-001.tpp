@@ -8,5 +8,5 @@ inteiro principal()
 
 	b := a 
 	
-    retorna(0)
+    retorna(b)
 fim

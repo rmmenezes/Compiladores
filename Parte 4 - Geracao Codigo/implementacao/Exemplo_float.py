@@ -91,4 +91,7 @@ if __name__ == '__main__':
         retorna = builder.load(retorna)
         builder.ret(retorna)
 
+    with open('exemplo_1.ll', 'w') as f:
+        f.write(str(modulo))
+        print(modulo)
     

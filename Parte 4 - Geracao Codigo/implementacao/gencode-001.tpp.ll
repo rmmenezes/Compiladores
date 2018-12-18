@@ -14,7 +14,8 @@ main.start:
   %"retorna" = load i32, i32* %"return", align 4
   br label %"main.end"
 main.end:
-  store i32 0, i32* %"return"
+  %"varTemp.1" = load i32, i32* %"b"
+  store i32 %"varTemp.1", i32* %"return"
   %"ret" = load i32, i32* %"return"
   ret i32 %"ret"
 }

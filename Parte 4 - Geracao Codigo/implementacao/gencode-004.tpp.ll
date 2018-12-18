@@ -33,7 +33,8 @@ repitaend_0:
   %"retorna" = load i32, i32* %"return", align 4
   br label %"main.end"
 main.end:
-  store i32 0, i32* %"return"
+  %"varTemp" = load i32, i32* @"soma"
+  store i32 %"varTemp", i32* %"return"
   %"ret" = load i32, i32* %"return"
   ret i32 %"ret"
 }

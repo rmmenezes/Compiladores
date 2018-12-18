@@ -7,7 +7,9 @@ from poda import *
 from llvmlite import ir
 from lex import Lex
 import sys
+from ctypes import CFUNCTYPE, c_int32
 
+global_string_name = 0  
 
 class Gerador_TOP:
     def __init__(self):
@@ -17,7 +19,7 @@ class Gerador_TOP:
         self.lista_ponteiros_funcoes = []
         self.contador_se = 0
         self.conta_repita = 0
-        self.l = None
+        self.leia = None
 
     def andar(self, raiz, modulo):
             if raiz:
@@ -103,13 +105,24 @@ class Gerador_TOP:
         else:
             return
 
+
     def leia_func(self, filho, modulo, builder):
-        leia = ir.FunctionType(ir.IntType(32), [])
-        self.l = ir.Function(modulo, leia, "leia")
-        entrada = self.builder.call(self.l, [])
-        resultado = ir.Constant(ir.DoubleType(), entrada)
-        self.builder.ret(resultado)
-        
+        for i in self.lista_ponteiros_variaveis:
+            if i.name == filho.child[0].value:
+                variavel = i
+        leia = self.funcao_externa("scanf", modulo)
+
+    def funcao_externa(self, name, modulo):
+        func_type = ir.FunctionType(ir.IntType(32), (), var_args=True)
+        return modulo.declare_intrinsic(name, (), func_type)
+
+    def declara_string_global(self, module, string_parametro):
+        typ = ir.ArrayType(ir.IntType(8), len(string_parametro))
+        temp = ir.GlobalVariable(module, typ, name=str("scanf"))
+
+    def chama_funcao(self, funcao, args):
+        self.builder.call(funcao, args)
+
     def escreva(self, filho, modulo, builder):
         print("ESCREVA")
 
@@ -156,6 +169,7 @@ class Gerador_TOP:
             operador = "==" 
         else:
             operador = operador.value    
+        self.conta_repita = self.conta_repita + 1
         repita = self.builder.icmp_signed(operador, varTempLeft, varTempRight, name="if_"+str(self.contador_se))
         self.builder.branch(repitatrue)
 

@@ -9,5 +9,5 @@ inteiro principal()
 		n := n - 1
 	até n = 0
 
-	retorna(0)
+	retorna(soma)
 fim

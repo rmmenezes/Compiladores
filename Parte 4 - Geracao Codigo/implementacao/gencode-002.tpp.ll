@@ -16,11 +16,11 @@ iftrue_0:
   store i32 1, i32* %"ret"
   br label %"ifend_0"
 iffalse_0:
-  store i32 0, i32* %"ret"
+  store i32 5, i32* %"ret"
   br label %"ifend_0"
 ifend_0:
   store i32 1, i32* %"ret"
-  store i32 0, i32* %"ret"
+  store i32 5, i32* %"ret"
   %"retorna" = load i32, i32* %"return", align 4
   br label %"main.end"
 main.end:
